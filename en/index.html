@@ -39,7 +39,7 @@
   <div class="actions">
     <a class="btn primary" href="#request">Request the script</a>
   </div>
-  <p class="verzendhint" style="margin-top:22px;color:var(--band-dim)">WhatsApp +66&nbsp;99&nbsp;146&nbsp;1761 &middot; hans@cldlbs.com</p>
+  <p class="verzendhint" style="margin-top:22px;color:var(--band-dim)">WhatsApp &middot; hans@cldlbs.com</p>
 </div>
 <div class="triage-list" aria-label="Example of a triage list">
   <div class="triage-list-head"><span>TRIAGE · INCIDENT WINDOW</span></div>
@@ -90,7 +90,7 @@
     <p class="aanvraag-noot">We aim to respond right away, subject to availability.<br>
       <b>This form sends nothing by itself:</b> the request leaves through your own WhatsApp or email.
       This page stores nothing.<br>
-      WhatsApp +66&nbsp;99&nbsp;146&nbsp;1761 &middot; hans@cldlbs.com
+      WhatsApp &middot; hans@cldlbs.com
     </p>
   </form>
 </div></section>
@@ -210,7 +210,9 @@
     function bericht(){
       if(!F.reportValidity()) return null;
       var v=function(n){return F.elements[n].value.trim()};
-      return 'Cluster Triage request\nName: '+v('voornaam')+' '+v('achternaam')+'\nCompany: '+v('bedrijf')+'\nE-mail: '+v('email')+'\nPhone: '+v('telefoon')+'\nCountry: '+v('land')+'\nCluster: '+v('cluster')+'\nIncident: '+v('uren')+' hours ago';
+      var d=new Date(),p=function(n){return String(n).padStart(2,'0')};
+      var stamp=d.getUTCFullYear()+'-'+p(d.getUTCMonth()+1)+'-'+p(d.getUTCDate())+' '+p(d.getUTCHours())+':'+p(d.getUTCMinutes())+' UTC';
+      return 'Cluster Triage request\nDate: '+stamp+'\nName: '+v('voornaam')+' '+v('achternaam')+'\nCompany: '+v('bedrijf')+'\nE-mail: '+v('email')+'\nPhone: '+v('telefoon')+'\nCountry: '+v('land')+'\nCluster: '+v('cluster')+'\nIncident: '+v('uren')+' hours ago';
     }
     document.getElementById('knop-wa').addEventListener('click',function(){
       var b=bericht(); if(b===null) return;
