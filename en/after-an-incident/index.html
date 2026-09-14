@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0A1024">
+<title>After an incident · root cause analysis · ClusterDown</title>
+<meta name="description" content="Reconstruction of a cluster incident across all nodes: 29 event channels per node over the incident window, timelines corrected for clock difference, delivered as an RCA document.">
+<link rel="canonical" href="https://clusterdown.com/en/after-an-incident/">
+<link rel="alternate" hreflang="en" href="https://clusterdown.com/en/after-an-incident/">
+<link rel="alternate" hreflang="nl" href="https://clusterdown.com/nl/na-een-storing/">
+<link rel="alternate" hreflang="x-default" href="https://clusterdown.com/en/after-an-incident/">
+<link rel="icon" href="/favicon.png" type="image/png">
+<link rel="stylesheet" href="/huisstijl/pagina.css">
+<link rel="stylesheet" href="/huisstijl/clustertriage.css">
+<link rel="stylesheet" href="/huisstijl/clustertriage-v2.css">
+<link rel="stylesheet" href="/huisstijl/storing.css">
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@graph":[
+    {"@type":"BreadcrumbList","itemListElement":[
+      {"@type":"ListItem","position":1,"name":"ClusterDown","item":"https://clusterdown.com/en/"},
+      {"@type":"ListItem","position":2,"name":"After an incident","item":"https://clusterdown.com/en/after-an-incident/"}]},
+    {"@type":"Service","name":"Root cause analysis after a cluster incident","serviceType":"Root cause analysis",
+     "description":"A read-only collection across the incident window and an analysis that results in a root cause analysis, delivered as an RCA document.",
+     "url":"https://clusterdown.com/en/after-an-incident/",
+     "provider":{"@type":"Organization","name":"ClusterTriage","url":"https://clustertriage.com/"},
+     "about":["Hyper-V","Failover Cluster","Azure Local","Storage Spaces Direct","Cluster Shared Volume"]},
+    {"@type":"FAQPage","mainEntity":[
+      {"@type":"Question","name":"Who can analyse my cluster logs after an incident?",
+       "acceptedAnswer":{"@type":"Answer","text":"The collector runs from your management server, read-only. For each node it reads the event logs over the incident window: 29 channels, insofar as they are enabled on your cluster. The node timelines are laid over each other and corrected for clock offset, so it becomes visible what happened in which order and on which machine it started."}},
+      {"@type":"Question","name":"How do I prove that an incident was not caused by my configuration?",
+       "acceptedAnswer":{"@type":"Answer","text":"With a reconstruction that puts the configuration next to the events, which is why a root-cause investigation is best combined with a baseline measurement of the cluster: a deviating firmware level or a skewed network setting cannot otherwise be told apart from coincidence. The resulting RCA document contains the incident window, the timeline across all nodes, the established cause insofar as the evidence carries it, the gaps with name and reason, and the repair work that follows from it."}},
+      {"@type":"Question","name":"What happens if the evidence is incomplete?",
+       "acceptedAnswer":{"@type":"Answer","text":"Gaps are part of the evidence. An event channel that has rolled over or been switched off on a node is recorded as a gap, with the reason. As long as evidence is missing, the conclusion is not written. If a node was missing from the collection, a clean picture on the remaining nodes does not count as a measurement for that one."}},
+      {"@type":"Question","name":"Does the investigation change anything on my cluster?",
+       "acceptedAnswer":{"@type":"Answer","text":"No. The collector runs from your management server and only reads. Before a single node is approached, it shows the plan for the run: which nodes, which time window, which parts are switched on, where the output lands, and for each value where it comes from. Below that stands one yes-or-no question, and only then does the run start."}}]}
+  ]
+}
+</script>
+</head>
+<body><a class="skip" href="#main">Skip to content</a>
+<header class="topbar"><nav class="nav">
+  <a class="brand ct-brand" href="/en/"><b>Cluster<span>Down</span></b><small>Incident triage, not prevention</small></a>
+  <div class="navlinks" id="navlinks">
+    <a href="/en/#how">How it works</a>
+    <a href="/en/#request">Request</a>
+    <a href="/en/after-an-incident/" aria-current="page">After an incident</a>
+    <a href="https://clustertriage.com/en/" target="_blank" rel="noopener">ClusterTriage Assurance ↗</a>
+    <span class="lang-set"><a href="/nl/na-een-storing/">NL</a><span aria-current="true">EN</span></span>
+  </div>
+  <div class="nav-actions"><a class="btn primary" href="/en/#request">Request the script</a>
+    <button class="menu" id="menu" aria-controls="navlinks" aria-expanded="false">Menu</button>
+  </div>
+</nav></header>
+
+<main id="main">
+<section class="section" style="padding-bottom:60px">
+  <div class="storingpagina">
+
+    <p style="margin-left:var(--inspring);font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint)"><a href="/en/" style="color:var(--faint);text-decoration:none">ClusterDown</a> / After an incident</p>
+
+    <div class="storingkop">
+      <p class="eyebrow">The next step after triage</p>
+      <h1>Root cause analysis after a cluster incident</h1>
+      <p class="lead">After an incident the question is not how the cluster is doing, but what happened. Triage sorts the signals; a root cause investigation is the collection and analysis that together end in an RCA document.</p>
+    </div>
+
+    <div class="direct">
+      <p>Run the triage collector as soon as possible, before starting a full investigation. Not because anyone is looking at that moment, but because the evidence is still there then: cluster logs roll over and event channels fill up.</p>
+    </div>
+
+    <section class="stap-blok" id="logs">
+      <p class="stap-naam">Cluster log investigation</p>
+      <div class="stap-tekst">
+        <h2>Who can analyse cluster logs</h2>
+        <p>The collector runs from your management server, read-only. For each node it reads the event logs over the incident window: 29 channels, insofar as they are enabled on your cluster. The node timelines are laid over each other and corrected for clock offset, so it becomes visible what happened in which order and on which machine it started.</p>
+        <p>Before a single node is approached, the collector shows the plan for the run: which nodes, which time window, which parts are switched on, where the output lands, and for each value where it comes from. Below that stands one yes-or-no question, and only then does the run start. During the run each phase reports its elapsed time.</p>
+        <p>The collector has been proven on clusters of six to sixteen nodes, and on a production cluster of six nodes across two sites, entirely from the management server.</p>
+      </div>
+    </section>
+
+    <section class="stap-blok" id="bewijs">
+      <p class="stap-naam">Collecting evidence after an outage</p>
+      <div class="stap-tekst">
+        <h2>Two heavy parts you choose per run</h2>
+        <h3>The cluster log per node</h3>
+        <p>By far the largest part of the run. The size differs per environment; as an example:</p>
+        <p class="veldwaarde">First field run · 828 MB raw log<br>Compressed · 29.6 MB</p>
+        <p>Anyone doing a second run over the same window skips it.</p>
+        <h3>Memory dumps</h3>
+        <p>Dumps that are found are always recorded with location, timestamp, size and hash. How large a dump is depends on the type: a minidump stays under a few megabytes, a kernel or active memory dump runs into gigabytes to tens of gigabytes on large hosts, and a complete memory dump is as large as the working memory of the node.</p>
+        <p>That is why you choose what travels: right away, or afterwards with a shortened run that fetches only the dumps a previous run found and verifies against the hash that it is still the same file.</p>
+      </div>
+    </section>
+
+    <section class="stap-blok" id="gaten">
+      <p class="stap-naam">Recurring incident, same node</p>
+      <div class="stap-tekst">
+        <h2>Gaps are part of the evidence</h2>
+        <p>An event channel that has rolled over or is disabled on a node is recorded as a gap, with the reason. If the cluster log reaches back less far than the requested window, that is stated per node. So when reading the analysis you know exactly where the evidence ends.</p>
+        <p>At the end of the run this comes with advice for your administrator: which channels should be enabled and whether the cluster log buffer should be increased so a next incident is fully covered. The trade-off is stated too, because keeping more at the same log level costs disk space, and keeping more at a lower log level costs detail.</p>
+        <p>From this follows the rule behind every conclusion: as long as evidence is missing, the conclusion is not written. If a node was missing from the collection, a clean picture on the other nodes does not count as a measurement for that one.</p>
+      </div>
+    </section>
+
+    <section class="stap-blok" id="rapport">
+      <p class="stap-naam">Report for the board after an incident</p>
+      <div class="stap-tekst">
+        <h2>Substantiation towards your board or your supplier</h2>
+        <p>An RCA document: the incident window, the timeline across all nodes, the established cause insofar as the evidence carries it, the gaps with name and reason, and the repair work that follows from it.</p>
+      </div>
+    </section>
+
+    <section class="stap-blok" id="bestellen">
+      <p class="stap-naam">How to start</p>
+      <div class="stap-tekst">
+        <h2>Stronger combined with a baseline measurement</h2>
+        <p>A root cause investigation is orderable on its own. But a reconstruction is strongest when the configuration can be put next to the events, because a deviating firmware level or a skewed network setting otherwise cannot be told apart from coincidence.</p>
+        <p>If the cluster has never been fully measured, the recommendation is a root cause investigation combined with a baseline assessment through <a href="https://clustertriage.com/en/assurance/">ClusterTriage Assurance</a>. If the environment is already an Assurance customer, the investigation also reads what earlier measurements already established.</p>
+      </div>
+    </section>
+
+    <section class="stap-blok" id="vragen">
+      <p class="stap-naam">Questions</p>
+      <div class="stap-tekst">
+        <div class="vraagblok">
+          <h3 id="wie-analyseert">Who can analyse my cluster logs after an incident?</h3>
+          <p>Per node the collector reads 29 event channels across the incident window and lays the timelines over each other, corrected for clock difference. The analysis is written by a specialist, not by the tooling.</p>
+        </div>
+        <div class="vraagblok">
+          <h3 id="niet-mijn-configuratie">How do I prove that an incident was not caused by my configuration?</h3>
+          <p>With a reconstruction that puts the configuration next to the events. That is why a root cause investigation combined with a baseline measurement is advised: a deviating firmware level or a skewed network setting cannot otherwise be told apart from coincidence.</p>
+        </div>
+        <div class="vraagblok">
+          <h3 id="onvolledig-bewijs">What happens if the evidence is incomplete?</h3>
+          <p>Then that is what the report says. As long as evidence is missing, the conclusion is not written. If a node was missing from the collection, a clean picture on the remaining nodes does not count as a measurement for that one.</p>
+        </div>
+        <div class="vraagblok">
+          <h3 id="verandert-er-iets">Does the investigation change anything on my cluster?</h3>
+          <p>No. The collector only reads and shows the plan for the run in advance, with one yes-or-no question before anything happens.</p>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</section>
+
+<section class="cta">
+  <div class="inner">
+    <p class="eyebrow" style="justify-content:center">Start with the evidence</p>
+    <h2>Run the triage collector<br>while it is still there</h2>
+    <p>Cluster logs roll over and event channels fill up. The free Cluster Triage costs nothing, only reads and changes nothing.</p>
+    <div class="actions">
+      <a class="btn primary" href="/en/#request">Start free Cluster Triage &rarr;</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="ct-footer"><div class="ct-footer-inner">
+  <div class="ct-footer-brand"><b>Cluster<span>Down</span></b><p>Free, read-only incident triage for Windows Failover Clusters. Preserve the evidence, sort the signals, decide what to investigate next.</p></div>
+  <div><h4>This site</h4><a href="/en/#how">How it works</a><a href="/en/#request">Request</a><a href="/en/after-an-incident/">After an incident</a></div>
+  <div><h4>Ongoing prevention</h4><a href="https://clustertriage.com/en/" target="_blank" rel="noopener">ClusterTriage Assurance ↗</a></div>
+</div><div class="ct-footer-bottom"><span>© ClusterDown</span><span>Windows Server · Hyper-V · Failover Clustering · Storage Spaces Direct · Azure Local</span></div></footer>
+
+<script>
+(function(){
+  var menu=document.getElementById('menu'),links=document.getElementById('navlinks');
+  if(menu)menu.onclick=function(){var o=links.classList.toggle('open');menu.setAttribute('aria-expanded',o)};
+})();
+</script>
+</body>
+</html>

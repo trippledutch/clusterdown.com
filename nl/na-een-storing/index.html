@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0A1024">
+<title>Root cause analyse cluster na een clusterstoring &middot; ClusterDown</title>
+<meta name="description" content="Oorzaak van een clusteruitval achterhalen: uitsluitend lezende verzameling over 29 gebeurteniskanalen per node, tijdlijnen op elkaar gelegd en gecorrigeerd voor klokverschil, opgeleverd als RCA-document voor uw directie of uw leverancier.">
+<link rel="canonical" href="https://clusterdown.com/nl/na-een-storing/">
+<link rel="alternate" hreflang="nl" href="https://clusterdown.com/nl/na-een-storing/">
+<link rel="alternate" hreflang="en" href="https://clusterdown.com/en/after-an-incident/">
+<link rel="alternate" hreflang="x-default" href="https://clusterdown.com/en/after-an-incident/">
+<link rel="icon" href="/favicon.png" type="image/png">
+<link rel="stylesheet" href="/huisstijl/pagina.css">
+<link rel="stylesheet" href="/huisstijl/clustertriage.css">
+<link rel="stylesheet" href="/huisstijl/clustertriage-v2.css">
+<link rel="stylesheet" href="/huisstijl/storing.css">
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@graph":[
+    {"@type":"BreadcrumbList","itemListElement":[
+      {"@type":"ListItem","position":1,"name":"ClusterDown","item":"https://clusterdown.com/nl/"},
+      {"@type":"ListItem","position":2,"name":"Na een storing","item":"https://clusterdown.com/nl/na-een-storing/"}]},
+    {"@type":"Service","name":"Root cause analyse na een clusterstoring","serviceType":"Root cause analysis",
+     "description":"Een uitsluitend lezende verzameling over het incidentvenster en een analyse die uitmondt in een oorzaakanalyse, opgeleverd als RCA-document.",
+     "url":"https://clusterdown.com/nl/na-een-storing/",
+     "provider":{"@type":"Organization","name":"ClusterTriage","url":"https://clustertriage.com/"},
+     "about":["Hyper-V","Failover Cluster","Azure Local","Storage Spaces Direct","Cluster Shared Volume"]},
+    {"@type":"FAQPage","mainEntity":[
+      {"@type":"Question","name":"Wie kan mijn clusterlogboeken analyseren na een storing?",
+       "acceptedAnswer":{"@type":"Answer","text":"De verzamelaar draait vanaf uw beheerserver, uitsluitend lezend. Per node leest hij over het incidentvenster de gebeurtenislogboeken uit: 29 kanalen, voor zover ze op uw cluster aan staan. De tijdlijnen van de nodes worden op elkaar gelegd en gecorrigeerd voor klokverschil, zodat zichtbaar wordt wat er in welke volgorde gebeurde en op welke machine het begon."}},
+      {"@type":"Question","name":"Hoe bewijs ik dat een storing niet aan mijn configuratie lag?",
+       "acceptedAnswer":{"@type":"Answer","text":"Met een reconstructie die de configuratie naast de gebeurtenissen legt, daarom wordt een oorzaakonderzoek het liefst gecombineerd met een nulmeting van het cluster: een afwijkend firmwareniveau of een scheve netwerkinstelling is anders niet van toeval te onderscheiden. Het RCA-document bevat het incidentvenster, de tijdlijn over alle nodes, de vastgestelde oorzaak voor zover het bewijs die draagt, de gaten met naam en reden en het herstelwerk dat eruit volgt."}},
+      {"@type":"Question","name":"Wat gebeurt er als het bewijs onvolledig is?",
+       "acceptedAnswer":{"@type":"Answer","text":"Gaten zijn onderdeel van het bewijs. Een gebeurteniskanaal dat op een node is doorgerold of uitgeschakeld is, wordt als gat vastgelegd, met de reden. Zolang bewijs ontbreekt, wordt de conclusie niet geschreven. Ontbrak een node bij de verzameling, dan telt een schoon beeld op de overige nodes niet als meting voor die ene."}},
+      {"@type":"Question","name":"Verandert het onderzoek iets aan mijn cluster?",
+       "acceptedAnswer":{"@type":"Answer","text":"Nee. De verzamelaar draait vanaf uw beheerserver en leest uitsluitend. Voordat er ook maar één node wordt benaderd, toont hij het plan van de run: welke nodes, welk tijdvenster, welke onderdelen aan staan, waar de uitvoer landt en per waarde waar die vandaan komt. Daaronder staat één ja-of-nee-vraag en dan pas begint de run."}}]}
+  ]
+}
+</script>
+</head>
+<body><a class="skip" href="#main">Naar inhoud</a>
+<header class="topbar"><nav class="nav">
+  <a class="brand ct-brand" href="/nl/"><b>Cluster<span>Down</span></b><small>Incidenttriage, geen preventie</small></a>
+  <div class="navlinks" id="navlinks">
+    <a href="/nl/#zowerkt">Zo werkt het</a>
+    <a href="/nl/#aanvraag">Aanvraag</a>
+    <a href="/nl/na-een-storing/" aria-current="page">Na een storing</a>
+    <a href="https://clustertriage.com/nl/" target="_blank" rel="noopener">ClusterTriage Assurance ↗</a>
+    <span class="lang-set"><span aria-current="true">NL</span><a href="/en/after-an-incident/">EN</a></span>
+  </div>
+  <div class="nav-actions"><a class="btn primary" href="/nl/#aanvraag">Vraag het script aan</a>
+    <button class="menu" id="menu" aria-controls="navlinks" aria-expanded="false">Menu</button>
+  </div>
+</nav></header>
+
+<main id="main">
+<section class="section" style="padding-bottom:60px">
+  <div class="storingpagina">
+
+    <p style="margin-left:var(--inspring);font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint)"><a href="/nl/" style="color:var(--faint);text-decoration:none">ClusterDown</a> / Na een storing</p>
+
+    <div class="storingkop">
+      <p class="eyebrow">De volgende stap na triage</p>
+      <h1>Root cause analyse na een clusterstoring</h1>
+      <p class="lead">De vraag na een storing is niet hoe het cluster ervoor staat, maar wat er is gebeurd. Triage sorteert de signalen; een oorzaakonderzoek is de verzameling en analyse die samen uitmonden in een RCA-document.</p>
+    </div>
+
+    <div class="direct">
+      <p>Draai de triage-verzamelaar zo snel mogelijk, voordat een volledig onderzoek start. Niet omdat er op dat moment gekeken wordt, maar omdat het bewijs er dan nog is: clusterlogboeken rollen door en gebeurteniskanalen lopen vol.</p>
+    </div>
+
+    <section class="stap-blok" id="logs">
+      <p class="stap-naam">Cluster log onderzoek</p>
+      <div class="stap-tekst">
+        <h2>Wie kan cluster logs analyseren</h2>
+        <p>De verzamelaar draait vanaf uw beheerserver, uitsluitend lezend. Per node leest hij over het incidentvenster de gebeurtenislogboeken uit: 29 kanalen, voor zover ze op uw cluster aan staan. De tijdlijnen van de nodes worden op elkaar gelegd en gecorrigeerd voor klokverschil, zodat zichtbaar wordt wat er in welke volgorde gebeurde en op welke machine het begon.</p>
+        <p>Voordat er ook maar één node wordt benaderd, toont de verzamelaar het plan van de run: welke nodes, welk tijdvenster, welke onderdelen aan staan, waar de uitvoer landt en per waarde waar die vandaan komt. Daaronder staat één ja-of-nee-vraag en dan pas begint de run. Tijdens de run meldt elke fase zijn verstreken tijd.</p>
+        <p>De verzamelaar is beproefd op clusters van zes tot zestien nodes en op een productiecluster van zes nodes over twee locaties, volledig vanaf de beheerserver.</p>
+      </div>
+    </section>
+
+    <section class="stap-blok" id="bewijs">
+      <p class="stap-naam">Bewijs verzamelen na uitval</p>
+      <div class="stap-tekst">
+        <h2>Twee zware onderdelen kiest u per run</h2>
+        <h3>De clusterlog per node</h3>
+        <p>Verreweg het grootste deel van de run. De omvang verschilt per omgeving; als voorbeeld:</p>
+        <p class="veldwaarde">Eerste veldrun &middot; 828 MB ruwe log<br>Gecomprimeerd &middot; 29,6 MB</p>
+        <p>Wie een tweede run over hetzelfde venster doet, slaat hem over.</p>
+        <h3>Geheugendumps</h3>
+        <p>Gevonden dumps worden altijd geregistreerd met vindplaats, tijdstip, grootte en hash. Hoe groot een dump is, hangt af van het type: een minidump blijft onder een paar megabyte, een kernel of active memory dump loopt op grote hosts in de gigabytes tot tientallen gigabytes en een volledige geheugendump is zo groot als het werkgeheugen van de node.</p>
+        <p>Daarom kiest u wat er meegaat: direct, of achteraf met een verkorte run die alleen de dumps van een eerdere run ophaalt en aan de hash controleert dat het nog hetzelfde bestand is.</p>
+      </div>
+    </section>
+
+    <section class="stap-blok" id="gaten">
+      <p class="stap-naam">Terugkerende storing, zelfde node</p>
+      <div class="stap-tekst">
+        <h2>Gaten zijn onderdeel van het bewijs</h2>
+        <p>Een gebeurteniskanaal dat op een node is doorgerold of uitgeschakeld is, wordt als gat vastgelegd, met de reden. Reikt het clusterlog minder ver terug dan het gevraagde venster, dan staat dat er per node bij. Zo weet u bij het lezen van de analyse precies waar het bewijs ophoudt.</p>
+        <p>Aan het eind van de run staat daar een advies voor uw beheerder bij: welke kanalen aangezet moeten worden en of de clusterlogbuffer vergroot moet worden om een volgend incident wel volledig te dekken. De afweging staat erbij, want langer bewaren op hetzelfde logniveau kost schijfruimte en langer bewaren op een lager logniveau kost detail.</p>
+        <p>Daaruit volgt ook de regel achter elke conclusie: zolang bewijs ontbreekt, wordt de conclusie niet geschreven. Ontbrak een node bij de verzameling, dan telt een schoon beeld op de overige nodes niet als meting voor die ene.</p>
+      </div>
+    </section>
+
+    <section class="stap-blok" id="rapport">
+      <p class="stap-naam">Rapport voor directie na storing</p>
+      <div class="stap-tekst">
+        <h2>Onderbouwing richting uw directie of uw leverancier</h2>
+        <p>Een RCA-document: het incidentvenster, de tijdlijn over alle nodes, de vastgestelde oorzaak voor zover het bewijs die draagt, de gaten met naam en reden en het herstelwerk dat eruit volgt.</p>
+      </div>
+    </section>
+
+    <section class="stap-blok" id="bestellen">
+      <p class="stap-naam">Zo start u</p>
+      <div class="stap-tekst">
+        <h2>Sterker in combinatie met een nulmeting</h2>
+        <p>Een oorzaakonderzoek is los bestelbaar. Maar een reconstructie is het sterkst wanneer de configuratie naast de gebeurtenissen kan worden gelegd, want een afwijkend firmwareniveau of een scheve netwerkinstelling is anders niet van toeval te onderscheiden.</p>
+        <p>Is het cluster nog nooit volledig gemeten, dan is het advies een oorzaakonderzoek te combineren met een nulmeting via <a href="https://clustertriage.com/nl/assurance/">ClusterTriage Assurance</a>. Is de omgeving al Assurance-klant, dan leest het onderzoek ook mee in wat eerdere metingen al vaststelden.</p>
+      </div>
+    </section>
+
+    <section class="stap-blok" id="vragen">
+      <p class="stap-naam">Vragen</p>
+      <div class="stap-tekst">
+        <div class="vraagblok">
+          <h3 id="wie-analyseert">Wie kan mijn clusterlogboeken analyseren na een storing?</h3>
+          <p>De verzamelaar leest per node 29 gebeurteniskanalen over het incidentvenster en legt de tijdlijnen op elkaar, gecorrigeerd voor klokverschil. De analyse wordt geschreven door een specialist, niet door de tooling.</p>
+        </div>
+        <div class="vraagblok">
+          <h3 id="niet-mijn-configuratie">Hoe bewijs ik dat een storing niet aan mijn configuratie lag?</h3>
+          <p>Met een reconstructie die de configuratie naast de gebeurtenissen legt. Daarom wordt een oorzaakonderzoek in combinatie met een nulmeting geadviseerd: een afwijkend firmwareniveau of een scheve netwerkinstelling is anders niet van toeval te onderscheiden.</p>
+        </div>
+        <div class="vraagblok">
+          <h3 id="onvolledig-bewijs">Wat gebeurt er als het bewijs onvolledig is?</h3>
+          <p>Dan staat dat in het rapport. Zolang bewijs ontbreekt, wordt de conclusie niet geschreven. Ontbrak een node bij de verzameling, dan telt een schoon beeld op de overige nodes niet als meting voor die ene.</p>
+        </div>
+        <div class="vraagblok">
+          <h3 id="verandert-er-iets">Verandert het onderzoek iets aan mijn cluster?</h3>
+          <p>Nee. De verzamelaar leest uitsluitend en toont vooraf het plan van de run, met één ja-of-nee-vraag voordat er iets gebeurt.</p>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</section>
+
+<section class="cta">
+  <div class="inner">
+    <p class="eyebrow" style="justify-content:center">Begin bij het bewijs</p>
+    <h2>Draai de triage-verzamelaar<br>nu het er nog is</h2>
+    <p>Clusterlogboeken rollen door en gebeurteniskanalen lopen vol. De gratis Cluster Triage kost niets, leest uitsluitend en verandert niets.</p>
+    <div class="actions">
+      <a class="btn primary" href="/nl/#aanvraag">Start gratis Cluster Triage &rarr;</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="ct-footer"><div class="ct-footer-inner">
+  <div class="ct-footer-brand"><b>Cluster<span>Down</span></b><p>Gratis, uitsluitend lezende incidenttriage voor Windows Failover Clusters. Bewaar het bewijs, sorteer de signalen, beslis wat u daarna onderzoekt.</p></div>
+  <div><h4>Deze site</h4><a href="/nl/#zowerkt">Zo werkt het</a><a href="/nl/#aanvraag">Aanvraag</a><a href="/nl/na-een-storing/">Na een storing</a></div>
+  <div><h4>Doorlopende preventie</h4><a href="https://clustertriage.com/nl/" target="_blank" rel="noopener">ClusterTriage Assurance ↗</a></div>
+</div><div class="ct-footer-bottom"><span>© ClusterDown</span><span>Windows Server · Hyper-V · Failover Clustering · Storage Spaces Direct · Azure Local</span></div></footer>
+
+<script>
+(function(){
+  var menu=document.getElementById('menu'),links=document.getElementById('navlinks');
+  if(menu)menu.onclick=function(){var o=links.classList.toggle('open');menu.setAttribute('aria-expanded',o)};
+})();
+</script>
+</body>
+</html>
