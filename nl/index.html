@@ -1,4 +1,4 @@
-<!doctype html><html lang="nl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#0A1024"><title>Cluster ligt eruit? Gratis Cluster Triage · ClusterDown</title><meta name="description" content="Cluster ligt eruit, clusternode valt steeds uit, quorum verloren of CSV offline? Cluster Triage is de gratis eerste stap: een uitsluitend lezend script geeft de vijf zwaarste signalen rond uw incidentvenster."><link rel="canonical" href="https://clusterdown.com/nl/"><link rel="alternate" hreflang="nl" href="https://clusterdown.com/nl/"><link rel="alternate" hreflang="en" href="https://clusterdown.com/en/"><link rel="alternate" hreflang="x-default" href="https://clusterdown.com/en/"><link rel="icon" href="/favicon.png" type="image/png"><link rel="stylesheet" href="/huisstijl/pagina.css?v=176ffb3d"><link rel="stylesheet" href="/huisstijl/clustertriage.css?v=250eb31b"><link rel="stylesheet" href="/huisstijl/clustertriage-v2.css?v=c184057a">
+<!doctype html><html lang="nl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#0A1024"><title>Cluster ligt eruit? Gratis Cluster Triage · ClusterDown</title><meta name="description" content="Cluster ligt eruit, clusternode valt steeds uit, quorum verloren of CSV offline? Cluster Triage is de gratis eerste stap: een uitsluitend lezend script geeft de vijf zwaarste signalen rond uw incidentvenster."><link rel="canonical" href="https://clusterdown.com/nl/"><link rel="alternate" hreflang="nl" href="https://clusterdown.com/nl/"><link rel="alternate" hreflang="en" href="https://clusterdown.com/en/"><link rel="alternate" hreflang="x-default" href="https://clusterdown.com/en/"><link rel="icon" href="/favicon.png" type="image/png"><link rel="stylesheet" href="/huisstijl/pagina.css?v=05a94be8"><link rel="stylesheet" href="/huisstijl/clustertriage.css?v=250eb31b"><link rel="stylesheet" href="/huisstijl/clustertriage-v2.css?v=c184057a">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -34,7 +34,7 @@
 
 <section class="hero"><div class="hero-inner"><div>
   <p class="eyebrow">Gratis</p>
-  <h1>Cluster Down?</h1>
+  <h1>Cluster <em>Down</em>?</h1>
   <p class="hero-copy">De gratis eerste stap na een clusterstoring. E&eacute;n uitsluitend lezend script over uw Hyper-V, Failover Cluster of Azure Local omgeving. U ontvangt de triagelijst: de vijf zwaarste signalen rond uw incidentvenster, gesorteerd op ernst. Gratis, zonder abonnement en zonder verplichtingen.</p>
   <div class="actions">
     <a class="btn primary" href="#aanvraag">Vraag het script aan</a>
@@ -42,9 +42,11 @@
 </div>
 <div class="triage-list" aria-label="Voorbeeld van een triagelijst">
   <div class="triage-list-head"><span>TRIAGE &middot; INCIDENTVENSTER</span></div>
-  <div class="triage-finding" data-r="crit"><strong>KRITIEK</strong><span>Witness onbereikbaar vanaf beide nodes</span></div>
-  <div class="triage-finding" data-r="high"><strong>HOOG</strong><span>Firmware van NODE02 onder het niveau dat de leverancier voorschrijft</span></div>
+  <div class="triage-finding" data-r="crit"><strong>KRITIEK</strong><span>Server heeft quorum verloren</span></div>
+  <div class="triage-finding" data-r="high"><strong>HOOG</strong><span>Witness onbereikbaar vanaf alle nodes</span></div>
+  <div class="triage-finding" data-r="high"><strong>HOOG</strong><span>Firmware/driver-mismatch bij netwerkadapter</span></div>
   <div class="triage-finding" data-r="med"><strong>MIDDEL</strong><span>PFC-klassen wijken af tussen host en switch</span></div>
+  <div class="triage-finding" data-r="med"><strong>MIDDEL</strong><span>Windows langer dan 3 maanden niet bijgewerkt</span></div>
   <p class="lijstnoot">Voorbeeld van de vorm; de inhoud komt uit uw eigen meting.</p>
 </div>
 </div></section>

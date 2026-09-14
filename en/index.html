@@ -1,4 +1,4 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#0A1024"><title>Cluster down? Free Cluster Triage · ClusterDown</title><meta name="description" content="Run one read-only script and receive the five heaviest signals around the incident, with measured value, node and time. Free, no subscription."><link rel="canonical" href="https://clusterdown.com/en/"><link rel="alternate" hreflang="en" href="https://clusterdown.com/en/"><link rel="alternate" hreflang="nl" href="https://clusterdown.com/nl/"><link rel="alternate" hreflang="x-default" href="https://clusterdown.com/en/"><link rel="icon" href="/favicon.png" type="image/png"><link rel="stylesheet" href="/huisstijl/pagina.css?v=176ffb3d"><link rel="stylesheet" href="/huisstijl/clustertriage.css?v=250eb31b"><link rel="stylesheet" href="/huisstijl/clustertriage-v2.css?v=c184057a">
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#0A1024"><title>Cluster down? Free Cluster Triage · ClusterDown</title><meta name="description" content="Run one read-only script and receive the five heaviest signals around the incident, with measured value, node and time. Free, no subscription."><link rel="canonical" href="https://clusterdown.com/en/"><link rel="alternate" hreflang="en" href="https://clusterdown.com/en/"><link rel="alternate" hreflang="nl" href="https://clusterdown.com/nl/"><link rel="alternate" hreflang="x-default" href="https://clusterdown.com/en/"><link rel="icon" href="/favicon.png" type="image/png"><link rel="stylesheet" href="/huisstijl/pagina.css?v=05a94be8"><link rel="stylesheet" href="/huisstijl/clustertriage.css?v=250eb31b"><link rel="stylesheet" href="/huisstijl/clustertriage-v2.css?v=c184057a">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -34,7 +34,7 @@
 
 <section class="hero"><div class="hero-inner"><div>
   <p class="eyebrow">Free</p>
-  <h1>Cluster Down?</h1>
+  <h1>Cluster <em>Down</em>?</h1>
   <p class="hero-copy">The free first step after a cluster incident. One read-only script across your Hyper-V, Failover Cluster or Azure Local environment. You receive the triage list: the five heaviest signals around your incident window, sorted by severity. Free, without subscription and without obligation.</p>
   <div class="actions">
     <a class="btn primary" href="#request">Request the script</a>
@@ -42,9 +42,11 @@
 </div>
 <div class="triage-list" aria-label="Example of a triage list">
   <div class="triage-list-head"><span>TRIAGE · INCIDENT WINDOW</span></div>
-  <div class="triage-finding" data-r="crit"><strong>CRITICAL</strong><span>Witness unreachable from both nodes</span></div>
-  <div class="triage-finding" data-r="high"><strong>HIGH</strong><span>Firmware on NODE02 below the level the vendor prescribes</span></div>
-  <div class="triage-finding" data-r="med"><strong>Medium</strong><span>PFC classes differ between host and switch</span></div>
+  <div class="triage-finding" data-r="crit"><strong>CRITICAL</strong><span>Server lost quorum</span></div>
+  <div class="triage-finding" data-r="high"><strong>HIGH</strong><span>Witness unreachable from all nodes</span></div>
+  <div class="triage-finding" data-r="high"><strong>HIGH</strong><span>Firmware/driver mismatch for network adapter</span></div>
+  <div class="triage-finding" data-r="med"><strong>MEDIUM</strong><span>PFC classes differ between host and switch</span></div>
+  <div class="triage-finding" data-r="med"><strong>MEDIUM</strong><span>Windows not up-to-date longer than 3 months</span></div>
   <p class="lijstnoot">Example of the form; the content comes from your own measurement.</p>
 </div>
 </div></section>
