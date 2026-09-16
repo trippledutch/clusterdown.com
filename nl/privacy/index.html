@@ -1,0 +1,53 @@
+<!doctype html><html lang="nl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#0A1024"><title>Privacyverklaring · ClusterDown</title><meta name="description" content="Privacyverklaring van ClusterDown."><meta name="robots" content="noindex,follow"><link rel="canonical" href="https://clusterdown.com/nl/privacy/"><link rel="icon" href="/favicon.png?v=b81e9faa" type="image/png"><link rel="stylesheet" href="/huisstijl/pagina.css?v=bab837ec"><link rel="stylesheet" href="/huisstijl/clustertriage.css?v=bd8d6ec6"><link rel="stylesheet" href="/huisstijl/clustertriage-v2.css?v=c184057a">
+<script>document.documentElement.setAttribute('data-js','ja')</script><!-- Google tag (gtag.js) with Consent Mode v2: everything denied until the visitor accepts; consent.js flips analytics_storage. --><script async src="https://www.googletagmanager.com/gtag/js?id=G-GT14SYKL6Y"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied',functionality_storage:'granted',security_storage:'granted',wait_for_update:500});gtag('js',new Date());gtag('config','G-GT14SYKL6Y',{anonymize_ip:true})</script>
+</head>
+<body><a class="skip" href="#main">Naar inhoud</a>
+<header class="topbar"><nav class="nav">
+  <a class="brand ct-brand" href="/nl/"><b>Cluster<span>Down</span></b><small>Incidenttriage, geen preventie</small></a>
+  <div class="navlinks" id="navlinks">
+    <a href="#zowerkt">Zo werkt het</a>
+    <a href="#aanvraag">Aanvraag</a>
+    <a href="#veilig">Veilig &amp; lezend</a>
+    <a href="/nl/na-een-storing/">Na een storing</a>
+    <a href="https://clustertriage.com/nl/" target="_blank" rel="noopener">ClusterTriage Assurance ↗</a>
+    <span class="lang-set"><span aria-current="true">NL</span><a href="/en/">EN</a></span>
+  </div>
+  <div class="nav-actions"><a class="btn primary" href="#aanvraag">Vraag het script aan</a>
+    <button class="menu" id="menu" aria-controls="navlinks" aria-expanded="false">Menu</button>
+  </div>
+</nav></header>
+
+<main id="main"><section class="section"><div class="inner"><div class="section-head"><p class="eyebrow">ClusterDown</p><h2>Privacyverklaring</h2><p class="lead">Deze pagina wordt geschreven voor ClusterDown en is tijdelijk leeg.</p></div></div></section></main>
+<footer class="ct-footer"><div class="ct-footer-inner">
+  <div class="ct-footer-brand"><b>Cluster<span>Down</span></b><p>Gratis, uitsluitend lezende incidenttriage voor Windows Failover Clusters. Bewaar het bewijs, sorteer de signalen, beslis wat u daarna onderzoekt.</p></div>
+  <div><h4>Deze site</h4><a href="#zowerkt">Zo werkt het</a><a href="#aanvraag">Aanvraag</a><a href="#veilig">Veilig &amp; lezend</a><a href="/nl/na-een-storing/">Na een storing</a></div>
+  <div><h4>Doorlopende preventie</h4><a href="https://clustertriage.com/nl/" target="_blank" rel="noopener">ClusterTriage Assurance ↗</a></div>
+</div><div class="ct-footer-bottom"><span>© ClusterDown</span><span>Windows Server · Hyper-V · Failover Clustering · Storage Spaces Direct · Azure Local</span><button type="button" class="cookiebalk-open" style="font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer;text-decoration:underline">Cookievoorkeuren</button></div></footer>
+
+<script>
+(function(){
+  var menu=document.getElementById('menu'),links=document.getElementById('navlinks');
+  if(menu)menu.onclick=function(){var o=links.classList.toggle('open');menu.setAttribute('aria-expanded',o)};
+  var F=document.getElementById('triageform');
+  if(F){
+    function bericht(){
+      if(!F.reportValidity()) return null;
+      var v=function(n){return F.elements[n].value.trim()};
+      var d=new Date(),p=function(n){return String(n).padStart(2,'0')};
+      var stamp=d.getUTCFullYear()+'-'+p(d.getUTCMonth()+1)+'-'+p(d.getUTCDate())+' '+p(d.getUTCHours())+':'+p(d.getUTCMinutes())+' UTC';
+      return 'Cluster Triage aanvraag\nDatum: '+stamp+'\nNaam: '+v('voornaam')+' '+v('achternaam')+'\nBedrijf: '+v('bedrijf')+'\nE-mail: '+v('email')+'\nTelefoon: '+v('telefoon')+'\nLand: '+v('land')+'\nCluster: '+v('cluster')+'\nIncident: '+v('uren')+' uur geleden';
+    }
+    document.getElementById('knop-wa').addEventListener('click',function(){
+      var b=bericht(); if(b===null) return;
+      window.open('https://wa.me/66991461761?text='+encodeURIComponent(b),'_blank','noopener');
+    });
+    document.getElementById('knop-mail').addEventListener('click',function(){
+      var b=bericht(); if(b===null) return;
+      location.href='mailto:hans@cldlbs.com?subject='+encodeURIComponent('Cluster Triage')+'&body='+encodeURIComponent(b);
+    });
+  }
+})();
+</script>
+<div class="cookiebalk" id="cookiebalk" role="dialog" aria-live="polite" aria-label="Cookies"><div class="cookiebalk-inner"><p>Wij gebruiken Google Analytics om te zien hoe bezoekers deze site gebruiken. Analytische cookies worden alleen geplaatst als u akkoord gaat. Wat er precies wordt vastgelegd staat in de <a href="/nl/privacy/">privacyverklaring</a>.</p><div class="cookiebalk-knoppen"><button type="button" class="btn primary" id="cookie-ja">Accepteer analytics</button><button type="button" class="btn ghost" id="cookie-nee">Weigeren</button></div></div></div>
+<script src="/huisstijl/consent.js?v=588f457b"></script>
+</body></html>
