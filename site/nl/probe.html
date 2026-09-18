@@ -233,4 +233,15 @@
 </script>
 <div class="cookiebalk" id="cookiebalk" role="dialog" aria-live="polite" aria-label="Cookies"><div class="cookiebalk-inner"><p>Wij gebruiken Google Analytics om te zien hoe bezoekers deze site gebruiken. Analytische cookies worden alleen geplaatst als u akkoord gaat. Wat er precies wordt vastgelegd staat in de <a href="/nl/privacy/">privacyverklaring</a>.</p><div class="cookiebalk-knoppen"><button type="button" class="btn primary" id="cookie-ja">Accepteer analytics</button><button type="button" class="btn ghost" id="cookie-nee">Weigeren</button></div></div></div>
 <script src="/styles/consent.js?v=588f457b"></script>
-</body></html>
+<script>
+addEventListener('load', function(){ setTimeout(function(){
+  var e=document.querySelector('.eyebrow'), h=document.querySelector('h1'),
+      hero=document.querySelector('.hero,.page-hero'), bar=document.querySelector('.topbar');
+  document.title='METING '+JSON.stringify({
+    eyebrow: e?Math.round(e.getBoundingClientRect().top):null,
+    h1: h?Math.round(h.getBoundingClientRect().top):null,
+    balk: bar?Math.round(bar.getBoundingClientRect().height):null,
+    heroPadTop: hero?getComputedStyle(hero).paddingTop:null,
+    heroKlasse: hero?hero.className:null});
+}, 300); });
+</script></body></html>
