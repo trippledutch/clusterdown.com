@@ -132,13 +132,10 @@
   .method-preview-flow{grid-template-columns:1fr}.method-preview-flow .arrow{transform:rotate(90deg)}
 }
 
-/* Hero headings (2026-09-18): one type scale for every hero, weight 500,
-   the second line in accent colour but upright (no italics); the home hero
-   one step larger. On phones a smaller minimum so two-line headings do not
-   wrap into three. */
-.hero h1,.hero.mid h1,.page-hero h1,.assurance-hero h1{font-weight:500;font-size:clamp(40px,6vw,80px);}; s{.home-hero h1{font-size:clamp(44px,7vw,94px)}
-}{.home-hero h1{font-size:clamp(40px,6vw,80px)}
-}; s{{font-size:clamp(40px,11vw,56px)}}}{{font-size:clamp(38px,10.5vw,52px)}}line-height:.98;letter-spacing:-.035em}
-.home-hero h1{font-size:clamp(44px,7vw,94px)}
+/* Hero headings (2026-09-18): one type scale for every hero including the
+   home page, weight 500, the second line in accent colour but upright (no
+   italics). On phones a smaller minimum so two-line headings do not wrap
+   into three. */
+.hero h1,.hero.mid h1,.page-hero h1,.assurance-hero h1,.home-hero h1{font-weight:500;font-size:clamp(40px,6vw,80px);line-height:.98;letter-spacing:-.035em}
 .hero h1 em,.page-hero h1 em,.assurance-hero h1 em{font-style:normal;color:var(--band-accent)}
-@media(max-width:800px){.hero h1,.hero.mid h1,.page-hero h1,.assurance-hero h1,.home-hero h1{font-size:clamp(40px,11vw,56px)}}
+@media(max-width:800px){.hero h1,.hero.mid h1,.page-hero h1,.assurance-hero h1,.home-hero h1{font-size:clamp(38px,10.5vw,52px)}}
