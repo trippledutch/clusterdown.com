@@ -29,7 +29,7 @@
      besluit E2 van 29 juli 2026. Zwart is de enige waarde die op wit papier en
      op een donkere ondergrond even onmiskenbaar is; de ring maakt hem zichtbaar
      op het donker. */
-  --crit:#A61B1B; --crit-ring:#FF3B30;
+  --crit:#000000; --crit-ring:#FF3B30;
   --high:#E03131; --med:#F76707; --low:#1C7ED6;
 
   /* status - Styles.json, blok Status */
