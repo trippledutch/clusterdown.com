@@ -218,8 +218,7 @@
       var v=function(n){return F.elements[n].value.trim()};
       var d=new Date(),p=function(n){return String(n).padStart(2,'0')};
       var stamp=d.getUTCFullYear()+'-'+p(d.getUTCMonth()+1)+'-'+p(d.getUTCDate())+' '+p(d.getUTCHours())+':'+p(d.getUTCMinutes())+' UTC';
-      return 'Cluster Triage aanvraag\nDatum: '+stamp+'\nNaam: '+v('voornaam')+' '+v('achternaam')+'\nBedrijf: '+v('bedrijf')+'\nE-mail: '+v('email')+'\nTelefoon: '+v('telefoon')+'\nLand: '+v('land')+'\nCluster: '+v('cluster')+'\nIncident: '+v('uren')+' uur geleden'+'
-Omschrijving: '+v('omschrijving');
+      return 'Cluster Triage aanvraag\nDatum: '+stamp+'\nNaam: '+v('voornaam')+' '+v('achternaam')+'\nBedrijf: '+v('bedrijf')+'\nE-mail: '+v('email')+'\nTelefoon: '+v('telefoon')+'\nLand: '+v('land')+'\nCluster: '+v('cluster')+'\nIncident: '+v('uren')+' uur geleden'+'\nOmschrijving: '+v('omschrijving');
     }
     document.getElementById('knop-wa').addEventListener('click',function(){
       var b=bericht(); if(b===null) return;
