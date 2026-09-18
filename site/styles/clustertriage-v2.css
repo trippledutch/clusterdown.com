@@ -139,3 +139,8 @@
 .hero h1,.hero.mid h1,.page-hero h1,.assurance-hero h1,.home-hero h1{font-weight:500;font-size:clamp(40px,6vw,80px);line-height:.98;letter-spacing:-.035em}
 .hero h1 em,.page-hero h1 em,.assurance-hero h1 em{font-style:normal;color:var(--band-accent)}
 @media(max-width:800px){.hero h1,.hero.mid h1,.page-hero h1,.assurance-hero h1,.home-hero h1{font-size:clamp(38px,10.5vw,52px)}}
+
+/* Request form (2026-09-18): readable field labels, same as the contact form
+   on clustertriage.com; the hours select and textarea share the input look. */
+.aanvraag label .lbl,.cta .aanvraag .lbl{font-family:var(--sans);font-size:14px;font-weight:500;letter-spacing:0;text-transform:none;color:var(--ink);margin-bottom:8px}
+.aanvraag select{font:inherit;font-size:16px;padding:14px 16px;border:1px solid var(--rule);border-radius:6px;background:var(--surface);color:var(--ink);width:100%}

@@ -1,4 +1,4 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="google-site-verification" content="exjshqlz5xB4mGcIthftsRXZ724F9PwdOvH6rwk62rI"><meta name="theme-color" content="#0A1024"><title>Cluster down? Free Cluster Triage · ClusterDown</title><meta name="description" content="Run one read-only script and receive the five heaviest signals around the incident, with measured value, node and time. Free, no subscription."><link rel="canonical" href="https://clusterdown.com/en/"><link rel="alternate" hreflang="en" href="https://clusterdown.com/en/"><link rel="alternate" hreflang="nl" href="https://clusterdown.com/nl/"><link rel="alternate" hreflang="x-default" href="https://clusterdown.com/en/"><link rel="icon" href="/favicon.png?v=b81e9faa" type="image/png"><link rel="stylesheet" href="/styles/site.css?v=c8ccf1a7"><link rel="stylesheet" href="/styles/clustertriage.css?v=f6764e54"><link rel="stylesheet" href="/styles/clustertriage-v2.css?v=d6b95e57">
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="google-site-verification" content="exjshqlz5xB4mGcIthftsRXZ724F9PwdOvH6rwk62rI"><meta name="theme-color" content="#0A1024"><title>Cluster down? Free Cluster Triage · ClusterDown</title><meta name="description" content="Run one read-only script and receive the five heaviest signals around the incident, with measured value, node and time. Free, no subscription."><link rel="canonical" href="https://clusterdown.com/en/"><link rel="alternate" hreflang="en" href="https://clusterdown.com/en/"><link rel="alternate" hreflang="nl" href="https://clusterdown.com/nl/"><link rel="alternate" hreflang="x-default" href="https://clusterdown.com/en/"><link rel="icon" href="/favicon.png?v=b81e9faa" type="image/png"><link rel="stylesheet" href="/styles/site.css?v=c8ccf1a7"><link rel="stylesheet" href="/styles/clustertriage.css?v=f6764e54"><link rel="stylesheet" href="/styles/clustertriage-v2.css?v=5ec9cbef">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -82,12 +82,16 @@
       <label><span class="lbl">Country</span><input name="land" autocomplete="country-name" required></label>
     </div>
     <label><span class="lbl">Cluster name</span><input name="cluster" required></label>
-    <label><span class="lbl">How many hours ago did the incident occur?</span><input name="uren" type="number" min="1" max="720" placeholder="12" required></label>
+    <label><span class="lbl">How many hours ago did the incident occur?</span><select name="uren" required><option value="" disabled selected></option><option value="12">12 hours</option><option value="24">24 hours</option><option value="36">36 hours</option><option value="48">48 hours</option><option value="60">60 hours</option><option value="72">72 hours</option></select></label>
+    <label>
+<span class="lbl">Short description of the problem and what triggered it</span>
+<textarea name="omschrijving" rows="4" placeholder="What do you see, since when, and what happened before?" required></textarea>
+</label>
 
-    <p class="verzendhint">Send the request via both WhatsApp and e-mail, so we cannot miss it.</p>
+    <p class="verzendhint">Send via WhatsApp, or by e-mail to hans@clustertriage.com.</p>
     <div class="verzendrij">
       <button type="button" class="btn primary" id="knop-wa">Send via WhatsApp</button>
-      <button type="button" class="btn dark" id="knop-mail">Also send by e-mail</button>
+      <button type="button" class="btn dark" id="knop-mail">Send by e-mail</button>
     </div>
     <p class="aanvraag-noot">We aim to respond right away, subject to availability.<br>
       <b>This form sends nothing by itself:</b> the request leaves through your own WhatsApp or email.
@@ -213,7 +217,8 @@
       var v=function(n){return F.elements[n].value.trim()};
       var d=new Date(),p=function(n){return String(n).padStart(2,'0')};
       var stamp=d.getUTCFullYear()+'-'+p(d.getUTCMonth()+1)+'-'+p(d.getUTCDate())+' '+p(d.getUTCHours())+':'+p(d.getUTCMinutes())+' UTC';
-      return 'Cluster Triage request\nDate: '+stamp+'\nName: '+v('voornaam')+' '+v('achternaam')+'\nCompany: '+v('bedrijf')+'\nE-mail: '+v('email')+'\nPhone: '+v('telefoon')+'\nCountry: '+v('land')+'\nCluster: '+v('cluster')+'\nIncident: '+v('uren')+' hours ago';
+      return 'Cluster Triage request\nDate: '+stamp+'\nName: '+v('voornaam')+' '+v('achternaam')+'\nCompany: '+v('bedrijf')+'\nE-mail: '+v('email')+'\nPhone: '+v('telefoon')+'\nCountry: '+v('land')+'\nCluster: '+v('cluster')+'\nIncident: '+v('uren')+' hours ago'+'
+Description: '+v('omschrijving');
     }
     document.getElementById('knop-wa').addEventListener('click',function(){
       var b=bericht(); if(b===null) return;
