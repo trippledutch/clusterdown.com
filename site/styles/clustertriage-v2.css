@@ -131,3 +131,12 @@
   .method-frame-wrap{padding:8px;border-radius:10px;margin-left:calc(var(--gutter) * -.45);margin-right:calc(var(--gutter) * -.45)}
   .method-preview-flow{grid-template-columns:1fr}.method-preview-flow .arrow{transform:rotate(90deg)}
 }
+
+/* Hero headings (2026-09-18): one type scale for every hero, weight 500,
+   the second line in accent colour but upright (no italics); the home hero
+   one step larger. On phones a smaller minimum so two-line headings do not
+   wrap into three. */
+.hero h1,.hero.mid h1,.page-hero h1,.assurance-hero h1{font-weight:500;font-size:clamp(42px,6.5vw,88px);line-height:.98;letter-spacing:-.035em}
+.home-hero h1{font-size:clamp(44px,7vw,94px)}
+.hero h1 em,.page-hero h1 em,.assurance-hero h1 em{font-style:normal;color:var(--band-accent)}
+@media(max-width:800px){.hero h1,.hero.mid h1,.page-hero h1,.assurance-hero h1,.home-hero h1{font-size:clamp(40px,11vw,56px)}}
