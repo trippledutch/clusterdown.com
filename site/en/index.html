@@ -82,6 +82,10 @@
       <label><span class="lbl">Country</span><input name="land" autocomplete="country-name" required></label>
     </div>
     <label><span class="lbl">Cluster name</span><input name="cluster" required></label>
+    <div class="veldrij">
+      <label><span class="lbl">Cluster type</span><select name="clustertype" required><option value="" disabled selected>Choose&hellip;</option><option value="Classical">Classical Hyper-V</option><option value="HCI">Azure Stack HCI</option><option value="AZL">Azure Local</option><option value="Other">Other</option></select></label>
+      <label><span class="lbl">Storage type</span><select name="storagetype" required><option value="" disabled selected>Choose&hellip;</option><option value="SAN-ISCSI">SAN-iSCSI</option><option value="SAN-FC">SAN-FC</option><option value="SMB3">SMB3</option><option value="S2D">S2D</option><option value="Local">Local</option><option value="Other">Other</option></select></label>
+    </div>
     <label><span class="lbl">How many hours ago did the incident occur?</span><select name="uren" required><option value="" disabled selected>Choose…</option><option value="12">12 hours</option><option value="24">24 hours</option><option value="36">36 hours</option><option value="48">48 hours</option><option value="60">60 hours</option><option value="72">72 hours</option></select></label>
     <label>
 <span class="lbl">Short description of the problem and what triggered it</span>
@@ -217,7 +221,19 @@
       var v=function(n){return F.elements[n].value.trim()};
       var d=new Date(),p=function(n){return String(n).padStart(2,'0')};
       var stamp=d.getUTCFullYear()+'-'+p(d.getUTCMonth()+1)+'-'+p(d.getUTCDate())+' '+p(d.getUTCHours())+':'+p(d.getUTCMinutes())+' UTC';
-      return 'Cluster Triage request\nDate: '+stamp+'\nName: '+v('voornaam')+' '+v('achternaam')+'\nCompany: '+v('bedrijf')+'\nE-mail: '+v('email')+'\nPhone: '+v('telefoon')+'\nCountry: '+v('land')+'\nCluster: '+v('cluster')+'\nIncident: '+v('uren')+' hours ago'+'\nDescription: '+v('omschrijving');
+      return 'Cluster Triage request\nDate: '+stamp+'\nName: '+v('voornaam')+' '+v('achternaam')+'\nCompany: '+v('bedrijf')+'\nE-mail: '+v('email')+'\nPhone: '+v('telefoon')+'\nCountry: '+v('land')+'\nCluster: '+v('cluster')+'\nCluster type: '+v('clustertype')+'\nStorage type: '+v('storagetype')+'\nIncident: '+v('uren')+' hours ago'+'\nDescription: '+v('omschrijving');
+    }
+
+    // S2D hoort bij HCI en Azure Local, dus die vult zichzelf in. Kiest de
+    // bezoeker daarna een ander clustertype, dan vervalt die automatische
+    // keuze weer; een handmatige keuze blijft altijd staan.
+    var ct=F.elements['clustertype'], st=F.elements['storagetype'], vanzelf=false;
+    if(ct&&st){
+      ct.addEventListener('change',function(){
+        if(ct.value==='HCI'||ct.value==='AZL'){ st.value='S2D'; vanzelf=true; }
+        else if(vanzelf){ st.value=''; vanzelf=false; }
+      });
+      st.addEventListener('change',function(){ vanzelf=false; });
     }
     document.getElementById('knop-wa').addEventListener('click',function(){
       var b=bericht(); if(b===null) return;
