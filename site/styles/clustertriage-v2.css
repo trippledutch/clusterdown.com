@@ -175,3 +175,6 @@ section[id]{scroll-margin-top:0}
 /* Under 800px the wordmark keeps its tagline but both shrink a little, so the
    tile follows: the text block measures 35 to 37px there. */
 @media(max-width:800px){ .brand.ct-brand .brand-mark{width:36px;height:36px} }
+/* Brand mark in the footer, next to the wordmark and the same height as that line. */
+.ct-footer-brand b{display:flex;align-items:center;gap:10px}
+.ct-footer-brand .footer-mark{width:28px;height:28px;border-radius:5px;flex:none}
