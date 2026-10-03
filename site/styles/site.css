@@ -1853,3 +1853,24 @@ html:not([data-js]) .cookiebalk-open{display:none}
 @media(prefers-reduced-motion:reduce){
   @view-transition{navigation:none}
 }
+
+/* ---- de menuknop is een hamburger ------------------------------------------
+   Op een klein scherm stond hier het woord "Menu" in een kader. Nu drie
+   streepjes; uitgeklapt staat er een kruis en dezelfde knop klapt weer dicht.
+   Het menu hangt rechts onder de knop in een kader, niet over de volle
+   breedte. De naam voor een schermlezer staat in aria-label. */
+.menu{border:0;padding:5px;width:34px;height:34px;line-height:0;cursor:pointer}
+.menu svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round}
+.menu .kruis,.menu[aria-expanded="true"] .ham{display:none}
+.menu[aria-expanded="true"] .kruis{display:inline}
+.menu:focus-visible{outline:2px solid currentColor;outline-offset:2px}
+@media(max-width:420px){.nav-actions{gap:6px}}
+@media(max-width:1100px){
+  .navlinks.open{
+    left:auto;right:4px;top:calc(100% + 4px);
+    width:max-content;min-width:0;padding:16px 22px;max-width:calc(100vw - 8px);
+    max-height:calc(100vh - 90px);overflow-y:auto;
+    border:1px solid #ffffff33;border-radius:10px;
+    box-shadow:0 12px 32px rgba(0,0,0,.45);
+  }
+}
