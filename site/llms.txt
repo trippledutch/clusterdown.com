@@ -1,0 +1,24 @@
+# ClusterDown
+
+> ClusterDown is the free, incident-focused entry point for a Hyper-V,
+> Failover Cluster, HCI or Azure Local cluster that is down or unstable now.
+> One read-only PowerShell script runs on a management server (or on a
+> cluster node) and reads the event channels of every node around the
+> incident window; the customer receives the triage list: the five heaviest
+> signals, sorted by severity. Free, without subscription and without
+> obligation. ClusterDown is part of ClusterTriage (https://clustertriage.com/),
+> which delivers the full findings report and, after an outage, a root cause
+> analysis.
+
+Run by Hans Vredevoort, 40+ years in Microsoft infrastructure, more than a
+decade as a Microsoft MVP for Failover Clustering, co-founder of Hyper-V.nu.
+
+## Triage
+
+- [Cluster Triage](https://clusterdown.com/en/) ([NL](https://clusterdown.com/nl/)): how the free triage works, what the script reads, why it is safe and read-only, and how to request it
+- [After an incident](https://clusterdown.com/en/after-an-incident/) ([NL](https://clusterdown.com/nl/na-een-storing/)): root cause analysis once triage points at something
+
+## Related
+
+- [ClusterTriage](https://clustertriage.com/en/) ([NL](https://clustertriage.com/nl/)): year-round Windows Failover Cluster assurance
+- [ClusterTriage articles](https://clustertriage.com/en/blog/) ([NL](https://clustertriage.com/nl/blog/)): technical articles on Hyper-V, Failover Clustering and Azure Local
