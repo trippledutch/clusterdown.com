@@ -18,6 +18,9 @@ in Dutch (`/nl/`) and English (`/en/`).
 - `sh tools/bump.sh` stamps content hashes on the stylesheet, script and
   favicon references. Run it after changing anything in `site/styles/` or the
   favicon; nginx caches those files for a year.
+- `python3 tools/indexnow-changed.py` pings IndexNow for the pages that changed
+  in a push (only URLs in the sitemap). It runs from the server's post-receive
+  hook; `python3 tools/indexnow-changed.py OLD NEW --dry-run` shows what it would send.
 
 ## Deploy
 
@@ -27,6 +30,10 @@ updates itself on push:
     git push production main
 
 nginx serves `/var/www/clusterdown.com/site`.
+
+After the checkout updates, the post-receive hook runs
+`python3 tools/indexnow-changed.py`, which pings IndexNow for the changed pages.
+It never fails the push.
 
 ## Wording
 

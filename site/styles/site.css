@@ -1874,3 +1874,27 @@ html:not([data-js]) .cookiebalk-open{display:none}
     box-shadow:0 12px 32px rgba(0,0,0,.45);
   }
 }
+
+/* Vergelijkingstabel met de gratis Microsoft-tools en de veelgestelde
+   vragen op de triagepagina. Op een telefoon worden de rijen gestapeld,
+   met het kolomlabel boven iedere cel. */
+.cmp-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;max-width:1000px;margin:0 auto}
+.cmp-table{width:100%;border-collapse:collapse;font-size:15px;min-width:560px}
+.cmp-table thead th{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--faint);text-align:left;font-weight:400;border-bottom:1px solid var(--ink);padding:0 16px 10px 0}
+.cmp-table tbody th,.cmp-table tbody td{border-bottom:1px solid var(--rule);padding:12px 16px 12px 0;vertical-align:top;line-height:1.55;text-align:left}
+.cmp-table tbody th{font-weight:600;color:var(--ink)}
+.cmp-table tbody td{color:var(--dim)}
+.cmp-tools tbody tr:last-child th,.cmp-tools tbody tr:last-child td{color:var(--ink)}
+@media(max-width:640px){
+  .cmp-table{min-width:0}
+  .cmp-table thead{display:none}
+  .cmp-table,.cmp-table tbody,.cmp-table tr,.cmp-table tbody th,.cmp-table tbody td{display:block;width:100%}
+  .cmp-table tr{border-bottom:1px solid var(--rule);padding:14px 0}
+  .cmp-table tbody th,.cmp-table tbody td{border:0;padding:2px 0}
+  .cmp-table tbody th{padding-bottom:6px}
+  .cmp-table tbody td::before{content:attr(data-label);display:block;font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--faint);margin-top:6px}
+}
+.faq-list .faq-q{border-top:1px solid var(--rule);padding:20px 0}
+.faq-list .faq-q:last-child{border-bottom:1px solid var(--rule)}
+.faq-list h3{font-size:18px;margin:0 0 8px;color:var(--ink)}
+.faq-list .faq-q p{margin:0}
