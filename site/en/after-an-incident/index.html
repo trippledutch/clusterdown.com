@@ -10,35 +10,20 @@
 <link rel="alternate" hreflang="en" href="https://clusterdown.com/en/after-an-incident/">
 <link rel="alternate" hreflang="nl" href="https://clusterdown.com/nl/na-een-storing/">
 <link rel="alternate" hreflang="x-default" href="https://clusterdown.com/en/after-an-incident/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="ClusterDown">
+<meta property="og:locale" content="en_GB">
+<meta property="og:locale:alternate" content="nl_NL">
+<meta property="og:url" content="https://clusterdown.com/en/after-an-incident/">
+<meta property="og:title" content="After an incident · root cause analysis · ClusterDown">
+<meta property="og:description" content="Reconstruction of a cluster incident across all nodes: 29 event channels per node over the incident window, timelines corrected for clock difference, delivered as an RCA document.">
+<meta name="twitter:card" content="summary">
 <link rel="icon" href="/favicon.png?v=2dc27af0" type="image/png">
 <link rel="stylesheet" href="/styles/site.css?v=05acb1db">
 <link rel="stylesheet" href="/styles/clustertriage.css?v=f6764e54">
 <link rel="stylesheet" href="/styles/clustertriage-v2.css?v=ec66b1b6">
 <link rel="stylesheet" href="/styles/incident.css?v=80a756b5">
-<script type="application/ld+json">
-{
-  "@context":"https://schema.org",
-  "@graph":[
-    {"@type":"BreadcrumbList","itemListElement":[
-      {"@type":"ListItem","position":1,"name":"ClusterDown","item":"https://clusterdown.com/en/"},
-      {"@type":"ListItem","position":2,"name":"After an incident","item":"https://clusterdown.com/en/after-an-incident/"}]},
-    {"@type":"Service","name":"Root cause analysis after a cluster incident","serviceType":"Root cause analysis",
-     "description":"A read-only collection across the incident window and an analysis that results in a root cause analysis, delivered as an RCA document.",
-     "url":"https://clusterdown.com/en/after-an-incident/",
-     "provider":{"@type":"Organization","name":"ClusterTriage","url":"https://clustertriage.com/"},
-     "about":["Hyper-V","Failover Cluster","Azure Local","Storage Spaces Direct","Cluster Shared Volume"]},
-    {"@type":"FAQPage","mainEntity":[
-      {"@type":"Question","name":"Who can analyse my cluster logs after an incident?",
-       "acceptedAnswer":{"@type":"Answer","text":"The collector runs from your management server, read-only. For each node it reads the event logs over the incident window: 29 channels, insofar as they are enabled on your cluster. The node timelines are laid over each other and corrected for clock offset, so it becomes visible what happened in which order and on which machine it started."}},
-      {"@type":"Question","name":"How do I prove that an incident was not caused by my configuration?",
-       "acceptedAnswer":{"@type":"Answer","text":"With a reconstruction that puts the configuration next to the events, which is why a root-cause investigation is best combined with a baseline measurement of the cluster: a deviating firmware level or a skewed network setting cannot otherwise be told apart from coincidence. The resulting RCA document contains the incident window, the timeline across all nodes, the established cause insofar as the evidence carries it, the gaps with name and reason, and the repair work that follows from it."}},
-      {"@type":"Question","name":"What happens if the evidence is incomplete?",
-       "acceptedAnswer":{"@type":"Answer","text":"Gaps are part of the evidence. An event channel that has rolled over or been switched off on a node is recorded as a gap, with the reason. As long as evidence is missing, the conclusion is not written. If a node was missing from the collection, a clean picture on the remaining nodes does not count as a measurement for that one."}},
-      {"@type":"Question","name":"Does the investigation change anything on my cluster?",
-       "acceptedAnswer":{"@type":"Answer","text":"No. The collector runs from your management server and only reads. Before a single node is approached, it shows the plan for the run: which nodes, which time window, which parts are switched on, where the output lands, and for each value where it comes from. Below that stands one yes-or-no question, and only then does the run start."}}]}
-  ]
-}
-</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"ClusterDown","item":"https://clusterdown.com/en/"},{"@type":"ListItem","position":2,"name":"After an incident","item":"https://clusterdown.com/en/after-an-incident/"}]},{"@type":"Service","name":"Root cause analysis after a cluster incident","serviceType":"Root cause analysis","description":"A read-only collection across the incident window and an analysis that results in a root cause analysis, delivered as an RCA document.","url":"https://clusterdown.com/en/after-an-incident/","provider":{"@type":"Organization","@id":"https://clustertriage.com/#organization","name":"ClusterTriage","url":"https://clustertriage.com/"},"about":["Hyper-V","Failover Cluster","Azure Local","Storage Spaces Direct","Cluster Shared Volume"],"@id":"https://clusterdown.com/#rca"},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Who can analyse my cluster logs after an incident?","acceptedAnswer":{"@type":"Answer","text":"The collector runs from your management server, read-only. For each node it reads the event logs over the incident window: 29 channels, insofar as they are enabled on your cluster. The node timelines are laid over each other and corrected for clock offset, so it becomes visible what happened in which order and on which machine it started."}},{"@type":"Question","name":"How do I prove that an incident was not caused by my configuration?","acceptedAnswer":{"@type":"Answer","text":"With a reconstruction that puts the configuration next to the events, which is why a root-cause investigation is best combined with a baseline measurement of the cluster: a deviating firmware level or a skewed network setting cannot otherwise be told apart from coincidence. The resulting RCA document contains the incident window, the timeline across all nodes, the established cause insofar as the evidence carries it, the gaps with name and reason, and the repair work that follows from it."}},{"@type":"Question","name":"What happens if the evidence is incomplete?","acceptedAnswer":{"@type":"Answer","text":"Gaps are part of the evidence. An event channel that has rolled over or been switched off on a node is recorded as a gap, with the reason. As long as evidence is missing, the conclusion is not written. If a node was missing from the collection, a clean picture on the remaining nodes does not count as a measurement for that one."}},{"@type":"Question","name":"Does the investigation change anything on my cluster?","acceptedAnswer":{"@type":"Answer","text":"No. The collector runs from your management server and only reads. Before a single node is approached, it shows the plan for the run: which nodes, which time window, which parts are switched on, where the output lands, and for each value where it comes from. Below that stands one yes-or-no question, and only then does the run start."}}]}]}</script>
 <script>document.documentElement.setAttribute('data-js','ja')</script><!-- Google tag (gtag.js) with Consent Mode v2: everything denied until the visitor accepts; consent.js flips analytics_storage. --><script async src="https://www.googletagmanager.com/gtag/js?id=G-GT14SYKL6Y"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied',functionality_storage:'granted',security_storage:'granted',wait_for_update:500});gtag('js',new Date());gtag('config','G-GT14SYKL6Y',{anonymize_ip:true})</script>
 </head>
 <body><a class="skip" href="#main">Skip to content</a>
