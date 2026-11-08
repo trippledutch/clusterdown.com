@@ -16,6 +16,8 @@ decade as a Microsoft MVP for Failover Clustering, co-founder of Hyper-V.nu.
 ## Triage
 
 - [Cluster Triage](https://clusterdown.com/en/) ([NL](https://clusterdown.com/nl/)): how the free triage works, what the script reads, why it is safe and read-only, and how to request it
+- [Compared with the free Microsoft tools](https://clusterdown.com/en/#compare) ([NL](https://clusterdown.com/nl/#vergelijking)): Get-ClusterLog, Test-Cluster and Event Viewer next to the triage list
+- [Frequently asked questions](https://clusterdown.com/en/#faq) ([NL](https://clusterdown.com/nl/#vragen)): cost, what the script changes, coverage and next steps
 - [After an incident](https://clusterdown.com/en/after-an-incident/) ([NL](https://clusterdown.com/nl/na-een-storing/)): root cause analysis once triage points at something
 
 ## Related
