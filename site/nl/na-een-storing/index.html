@@ -10,35 +10,20 @@
 <link rel="alternate" hreflang="nl" href="https://clusterdown.com/nl/na-een-storing/">
 <link rel="alternate" hreflang="en" href="https://clusterdown.com/en/after-an-incident/">
 <link rel="alternate" hreflang="x-default" href="https://clusterdown.com/en/after-an-incident/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="ClusterDown">
+<meta property="og:locale" content="nl_NL">
+<meta property="og:locale:alternate" content="en_GB">
+<meta property="og:url" content="https://clusterdown.com/nl/na-een-storing/">
+<meta property="og:title" content="Root cause analyse cluster na een clusterstoring · ClusterDown">
+<meta property="og:description" content="Oorzaak van een clusteruitval achterhalen: uitsluitend lezende verzameling over 29 gebeurteniskanalen per node, tijdlijnen op elkaar gelegd en gecorrigeerd voor klokverschil, opgeleverd als RCA-document voor uw directie of uw leverancier.">
+<meta name="twitter:card" content="summary">
 <link rel="icon" href="/favicon.png?v=2dc27af0" type="image/png">
 <link rel="stylesheet" href="/styles/site.css?v=05acb1db">
 <link rel="stylesheet" href="/styles/clustertriage.css?v=f6764e54">
 <link rel="stylesheet" href="/styles/clustertriage-v2.css?v=ec66b1b6">
 <link rel="stylesheet" href="/styles/incident.css?v=80a756b5">
-<script type="application/ld+json">
-{
-  "@context":"https://schema.org",
-  "@graph":[
-    {"@type":"BreadcrumbList","itemListElement":[
-      {"@type":"ListItem","position":1,"name":"ClusterDown","item":"https://clusterdown.com/nl/"},
-      {"@type":"ListItem","position":2,"name":"Na een storing","item":"https://clusterdown.com/nl/na-een-storing/"}]},
-    {"@type":"Service","name":"Root cause analyse na een clusterstoring","serviceType":"Root cause analysis",
-     "description":"Een uitsluitend lezende verzameling over het incidentvenster en een analyse die uitmondt in een oorzaakanalyse, opgeleverd als RCA-document.",
-     "url":"https://clusterdown.com/nl/na-een-storing/",
-     "provider":{"@type":"Organization","name":"ClusterTriage","url":"https://clustertriage.com/"},
-     "about":["Hyper-V","Failover Cluster","Azure Local","Storage Spaces Direct","Cluster Shared Volume"]},
-    {"@type":"FAQPage","mainEntity":[
-      {"@type":"Question","name":"Wie kan mijn clusterlogboeken analyseren na een storing?",
-       "acceptedAnswer":{"@type":"Answer","text":"De verzamelaar draait vanaf uw beheerserver, uitsluitend lezend. Per node leest hij over het incidentvenster de gebeurtenislogboeken uit: 29 kanalen, voor zover ze op uw cluster aan staan. De tijdlijnen van de nodes worden op elkaar gelegd en gecorrigeerd voor klokverschil, zodat zichtbaar wordt wat er in welke volgorde gebeurde en op welke machine het begon."}},
-      {"@type":"Question","name":"Hoe bewijs ik dat een storing niet aan mijn configuratie lag?",
-       "acceptedAnswer":{"@type":"Answer","text":"Met een reconstructie die de configuratie naast de gebeurtenissen legt, daarom wordt een oorzaakonderzoek het liefst gecombineerd met een nulmeting van het cluster: een afwijkend firmwareniveau of een scheve netwerkinstelling is anders niet van toeval te onderscheiden. Het RCA-document bevat het incidentvenster, de tijdlijn over alle nodes, de vastgestelde oorzaak voor zover het bewijs die draagt, de gaten met naam en reden en het herstelwerk dat eruit volgt."}},
-      {"@type":"Question","name":"Wat gebeurt er als het bewijs onvolledig is?",
-       "acceptedAnswer":{"@type":"Answer","text":"Gaten zijn onderdeel van het bewijs. Een gebeurteniskanaal dat op een node is doorgerold of uitgeschakeld is, wordt als gat vastgelegd, met de reden. Zolang bewijs ontbreekt, wordt de conclusie niet geschreven. Ontbrak een node bij de verzameling, dan telt een schoon beeld op de overige nodes niet als meting voor die ene."}},
-      {"@type":"Question","name":"Verandert het onderzoek iets aan mijn cluster?",
-       "acceptedAnswer":{"@type":"Answer","text":"Nee. De verzamelaar draait vanaf uw beheerserver en leest uitsluitend. Voordat er ook maar één node wordt benaderd, toont hij het plan van de run: welke nodes, welk tijdvenster, welke onderdelen aan staan, waar de uitvoer landt en per waarde waar die vandaan komt. Daaronder staat één ja-of-nee-vraag en dan pas begint de run."}}]}
-  ]
-}
-</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"ClusterDown","item":"https://clusterdown.com/nl/"},{"@type":"ListItem","position":2,"name":"Na een storing","item":"https://clusterdown.com/nl/na-een-storing/"}]},{"@type":"Service","name":"Root cause analyse na een clusterstoring","serviceType":"Root cause analysis","description":"Een uitsluitend lezende verzameling over het incidentvenster en een analyse die uitmondt in een oorzaakanalyse, opgeleverd als RCA-document.","url":"https://clusterdown.com/nl/na-een-storing/","provider":{"@type":"Organization","@id":"https://clustertriage.com/#organization","name":"ClusterTriage","url":"https://clustertriage.com/"},"about":["Hyper-V","Failover Cluster","Azure Local","Storage Spaces Direct","Cluster Shared Volume"],"@id":"https://clusterdown.com/#rca"},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Wie kan mijn clusterlogboeken analyseren na een storing?","acceptedAnswer":{"@type":"Answer","text":"De verzamelaar draait vanaf uw beheerserver, uitsluitend lezend. Per node leest hij over het incidentvenster de gebeurtenislogboeken uit: 29 kanalen, voor zover ze op uw cluster aan staan. De tijdlijnen van de nodes worden op elkaar gelegd en gecorrigeerd voor klokverschil, zodat zichtbaar wordt wat er in welke volgorde gebeurde en op welke machine het begon."}},{"@type":"Question","name":"Hoe bewijs ik dat een storing niet aan mijn configuratie lag?","acceptedAnswer":{"@type":"Answer","text":"Met een reconstructie die de configuratie naast de gebeurtenissen legt, daarom wordt een oorzaakonderzoek het liefst gecombineerd met een nulmeting van het cluster: een afwijkend firmwareniveau of een scheve netwerkinstelling is anders niet van toeval te onderscheiden. Het RCA-document bevat het incidentvenster, de tijdlijn over alle nodes, de vastgestelde oorzaak voor zover het bewijs die draagt, de gaten met naam en reden en het herstelwerk dat eruit volgt."}},{"@type":"Question","name":"Wat gebeurt er als het bewijs onvolledig is?","acceptedAnswer":{"@type":"Answer","text":"Gaten zijn onderdeel van het bewijs. Een gebeurteniskanaal dat op een node is doorgerold of uitgeschakeld is, wordt als gat vastgelegd, met de reden. Zolang bewijs ontbreekt, wordt de conclusie niet geschreven. Ontbrak een node bij de verzameling, dan telt een schoon beeld op de overige nodes niet als meting voor die ene."}},{"@type":"Question","name":"Verandert het onderzoek iets aan mijn cluster?","acceptedAnswer":{"@type":"Answer","text":"Nee. De verzamelaar draait vanaf uw beheerserver en leest uitsluitend. Voordat er ook maar één node wordt benaderd, toont hij het plan van de run: welke nodes, welk tijdvenster, welke onderdelen aan staan, waar de uitvoer landt en per waarde waar die vandaan komt. Daaronder staat één ja-of-nee-vraag en dan pas begint de run."}}]}]}</script>
 <script>document.documentElement.setAttribute('data-js','ja')</script><!-- Google tag (gtag.js) with Consent Mode v2: everything denied until the visitor accepts; consent.js flips analytics_storage. --><script async src="https://www.googletagmanager.com/gtag/js?id=G-GT14SYKL6Y"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied',functionality_storage:'granted',security_storage:'granted',wait_for_update:500});gtag('js',new Date());gtag('config','G-GT14SYKL6Y',{anonymize_ip:true})</script>
 </head>
 <body><a class="skip" href="#main">Naar inhoud</a>
