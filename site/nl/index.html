@@ -157,7 +157,7 @@
     <li><code>Get-ClusterLog -TimeSpan 60 -UseLocalTime -Destination C:\Temp</code>: schrijft het cluster-debuglog van iedere node over de laatste 60 minuten. Lees het rond de tijden uit stap 4.</li>
     <li><code>Test-Cluster -Ignore Storage</code>: valideert netwerk, inventaris en configuratie zonder de schijven aan te raken. Houd de storagetests weg van een cluster in productie.</li>
   </ol>
-  <p style="max-width:860px;margin:0 auto">Forceer het quorum niet (<code>-FixQuorum</code>) zolang u niet weet waarom het verloren ging. ClusterDown voert deze leesacties in één keer uit op alle nodes, over het venster van het incident, en geeft de vijf zwaarste signalen gesorteerd op ernst, met node en tijdstip. <a href="#aanvraag">Vraag het triagescript aan</a>.</p>
+  <p style="max-width:860px;margin:0 auto">Forceer het quorum niet (<code>-FixQuorum</code>) zolang u niet weet waarom het verloren ging. ClusterDown voert deze leesacties in één keer uit op alle nodes, over het venster van het incident, en geeft de vijf zwaarste signalen gesorteerd op ernst, met node en tijdstip. Het sorteert de signalen; de oorzaak stelt het niet vast. <a href="#aanvraag">Vraag het triagescript aan</a>.</p>
 </div></section>
 
 <section class="section" id="herken" style="background:var(--surface)">

@@ -156,7 +156,7 @@
     <li><code>Get-ClusterLog -TimeSpan 60 -UseLocalTime -Destination C:\Temp</code>: writes the cluster debug log of every node for the last 60 minutes. Read it around the times from step 4.</li>
     <li><code>Test-Cluster -Ignore Storage</code>: validates network, inventory and configuration without touching the disks. Keep the storage tests off a cluster in production.</li>
   </ol>
-  <p style="max-width:860px;margin:0 auto">Do not force quorum (<code>-FixQuorum</code>) unless you know why it was lost. ClusterDown runs these reads across all nodes at once, over the incident window, and returns the five heaviest signals sorted by severity, with node and timestamp. <a href="#request">Request the triage script</a>.</p>
+  <p style="max-width:860px;margin:0 auto">Do not force quorum (<code>-FixQuorum</code>) unless you know why it was lost. ClusterDown runs these reads across all nodes at once, over the incident window, and returns the five heaviest signals sorted by severity, with node and timestamp. It sorts the signals; it does not determine the root cause. <a href="#request">Request the triage script</a>.</p>
 </div></section>
 
 <section class="section" id="recognise" style="background:var(--surface)">
