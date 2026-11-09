@@ -147,6 +147,19 @@
   </table></div>
 </div></section>
 
+<section class="section" id="met-de-hand"><div class="inner">
+  <div class="section-head"><h2>Triage met de hand: de commando's</h2><p class="lead">Zonder extra tool brengen deze ingebouwde PowerShell-commando's een falend Windows Failover Cluster snel in kaart. Voer ze uit op een node of een beheerserver met clusterrechten. Ze lezen alleen.</p></div>
+  <ol class="by-hand" style="max-width:860px;margin:0 auto 20px;line-height:1.6">
+    <li><code>Get-ClusterNode</code>: staan alle nodes op Up? Een node die Down of Paused is, is het eerste spoor.</li>
+    <li><code>Get-ClusterQuorum</code> en <code>Get-ClusterResource</code>: is de witness bereikbaar, en welke resources zijn offline of mislukt, op welke node?</li>
+    <li><code>Get-ClusterSharedVolume</code>: is iedere Cluster Shared Volume online, en draait er een in redirected access?</li>
+    <li><code>Get-WinEvent -FilterHashtable @{LogName='System'; Id=1135,1177,5120}</code> op iedere node: event 1135 betekent dat een node uit het cluster is verwijderd, 1177 dat het quorum verloren is, 5120 dat CSV-I/O is gepauzeerd. Noteer de tijden en vergelijk ze tussen de nodes.</li>
+    <li><code>Get-ClusterLog -TimeSpan 60 -UseLocalTime -Destination C:\Temp</code>: schrijft het cluster-debuglog van iedere node over de laatste 60 minuten. Lees het rond de tijden uit stap 4.</li>
+    <li><code>Test-Cluster -Ignore Storage</code>: valideert netwerk, inventaris en configuratie zonder de schijven aan te raken. Houd de storagetests weg van een cluster in productie.</li>
+  </ol>
+  <p style="max-width:860px;margin:0 auto">Forceer het quorum niet (<code>-FixQuorum</code>) zolang u niet weet waarom het verloren ging. ClusterDown voert deze leesacties in één keer uit op alle nodes, over het venster van het incident, en geeft de vijf zwaarste signalen gesorteerd op ernst, met node en tijdstip. Het sorteert de signalen; de oorzaak stelt het niet vast. <a href="#aanvraag">Vraag het triagescript aan</a>.</p>
+</div></section>
+
 <section class="section" id="herken" style="background:var(--surface)">
   <div class="inner">
     <div class="section-head" style="text-align:left;margin-left:0;max-width:var(--kolom)">

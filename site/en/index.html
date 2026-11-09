@@ -146,6 +146,19 @@
   </table></div>
 </div></section>
 
+<section class="section" id="by-hand"><div class="inner">
+  <div class="section-head"><h2>Triage by hand: the commands</h2><p class="lead">Without any extra tool, these built-in PowerShell commands narrow down a failing Windows Failover Cluster. Run them from a node or a management server with cluster rights. All of them only read.</p></div>
+  <ol class="by-hand" style="max-width:860px;margin:0 auto 20px;line-height:1.6">
+    <li><code>Get-ClusterNode</code>: are all nodes Up? A node that is Down or Paused is the first lead.</li>
+    <li><code>Get-ClusterQuorum</code> and <code>Get-ClusterResource</code>: is the witness reachable, and which resources are offline or failed, on which node?</li>
+    <li><code>Get-ClusterSharedVolume</code>: is every Cluster Shared Volume online, and is any of them in redirected access?</li>
+    <li><code>Get-WinEvent -FilterHashtable @{LogName='System'; Id=1135,1177,5120}</code> on each node: event 1135 means a node was removed from membership, 1177 that quorum was lost, 5120 that CSV I/O was paused. Note the times and compare them across nodes.</li>
+    <li><code>Get-ClusterLog -TimeSpan 60 -UseLocalTime -Destination C:\Temp</code>: writes the cluster debug log of every node for the last 60 minutes. Read it around the times from step 4.</li>
+    <li><code>Test-Cluster -Ignore Storage</code>: validates network, inventory and configuration without touching the disks. Keep the storage tests off a cluster in production.</li>
+  </ol>
+  <p style="max-width:860px;margin:0 auto">Do not force quorum (<code>-FixQuorum</code>) unless you know why it was lost. ClusterDown runs these reads across all nodes at once, over the incident window, and returns the five heaviest signals sorted by severity, with node and timestamp. It sorts the signals; it does not determine the root cause. <a href="#request">Request the triage script</a>.</p>
+</div></section>
+
 <section class="section" id="recognise" style="background:var(--surface)">
   <div class="inner">
     <div class="section-head" style="text-align:left;margin-left:0;max-width:var(--kolom)">
