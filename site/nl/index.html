@@ -56,11 +56,11 @@
   <div class="section-head"><h2>Zo werkt het</h2></div>
   <div class="benefits">
     <div class="benefit"><div class="icon">01</div><h3>Vraag het script aan</h3>
-      <p>Vul het formulier in en verstuur het via WhatsApp en e-mail; u ontvangt het script met de leeswijzer.</p></div>
+      <p>Vul één kort formulier in. U downloadt het script met de leeswijzer meteen.</p></div>
     <div class="benefit"><div class="icon">02</div><h3>Draai het vanaf uw beheerserver of clusternode</h3>
       <p>Het leest alleen: de gebeurteniskanalen van alle nodes over het incidentvenster. Vooraf toont het het plan van de run, met &eacute;&eacute;n ja-of-nee-vraag. Geheugendumps blijven in deze gratis variant buiten beschouwing.</p></div>
     <div class="benefit"><div class="icon">03</div><h3>Draag de uitvoer over</h3>
-      <p>U zet het bestand op de versleutelde Proton-share die wij voor u klaarzetten.</p></div>
+      <p>U uploadt de ene versleutelde zip in uw browser. Bevestig uw e-mailadres en de uitkomst opent in het portaal.</p></div>
   </div>
   <p class="slotregel">U ontvangt de top 5 waarschijnlijke boosdoeners.</p>
 </div></section>
@@ -68,41 +68,17 @@
 <section class="section" id="aanvraag"><div class="inner" style="max-width:760px">
   <div class="section-head" style="text-align:left;max-width:none">
     <h2 style="font-size:clamp(34px,4vw,52px)">Aanvraag</h2>
-    <p class="lead" style="margin:0">Een paar gegevens zijn genoeg om u het juiste script en de leeswijzer te sturen. Het aantal uren bepaalt het meetvenster van de run.</p>
+    <p class="lead" style="margin:0">Een paar gegevens zijn genoeg: het cluster, of het nog draait, wat er gebeurde en hoe ver terug te kijken. U downloadt het script meteen, zonder op ons te wachten.</p>
   </div>
-  <form class="aanvraag" id="triageform">
-    <div class="veldrij">
-      <label><span class="lbl">Voornaam</span><input name="voornaam" autocomplete="given-name" required></label>
-      <label><span class="lbl">Achternaam</span><input name="achternaam" autocomplete="family-name" required></label>
-    </div>
-    <label><span class="lbl">Bedrijf of organisatie</span><input name="bedrijf" autocomplete="organization" required></label>
-    <label><span class="lbl">E-mailadres</span><input name="email" type="email" autocomplete="email" required></label>
-    <div class="veldrij">
-      <label><span class="lbl">Telefoon, met landcode</span><input name="telefoon" type="tel" autocomplete="tel" placeholder="+31 6 ..." required></label>
-      <label><span class="lbl">Land</span><input name="land" autocomplete="country-name" required></label>
-    </div>
-    <label><span class="lbl">Clusternaam</span><input name="cluster" required></label>
-    <div class="veldrij">
-      <label><span class="lbl">Clustertype</span><select name="clustertype" required><option value="" disabled selected>Kies&hellip;</option><option value="Classical">Klassiek Hyper-V</option><option value="HCI">Azure Stack HCI</option><option value="AZL">Azure Local</option><option value="Other">Anders</option></select></label>
-      <label><span class="lbl">Storagetype</span><select name="storagetype" required><option value="" disabled selected>Kies&hellip;</option><option value="SAN-ISCSI">SAN-iSCSI</option><option value="SAN-FC">SAN-FC</option><option value="SMB3">SMB3</option><option value="S2D">S2D</option><option value="Local">Lokaal</option><option value="Other">Anders</option></select></label>
-    </div>
-    <label><span class="lbl">Hoeveel uur geleden vond het incident plaats?</span><select name="uren" required><option value="" disabled selected>Kies…</option><option value="12">12 uur</option><option value="24">24 uur</option><option value="36">36 uur</option><option value="48">48 uur</option><option value="60">60 uur</option><option value="72">72 uur</option></select></label>
-    <label>
-<span class="lbl">Korte omschrijving van problematiek en aanleiding</span>
-<textarea name="omschrijving" rows="4" placeholder="Wat ziet u, sinds wanneer, en wat ging eraan vooraf?" required></textarea>
-</label>
-
-    <p class="verzendhint">Verstuur via WhatsApp, of per e-mail naar hans@clustertriage.com.</p>
+  <div class="aanvraag">
     <div class="verzendrij">
-      <button type="button" class="btn primary" id="knop-wa">Versturen via WhatsApp</button>
-      <button type="button" class="btn dark" id="knop-mail">Versturen per e-mail</button>
+      <a class="btn primary" href="https://portal.clustertriage.com/clusterdown/">Start de gratis triage</a>
     </div>
-    <p class="aanvraag-noot">
-      Wij proberen per omgaande te reageren, afhankelijk van bereikbaarheid.<br>
-      <b>Dit formulier verstuurt niets zelf:</b> de aanvraag vertrekt via uw eigen WhatsApp of e-mail.
-      Deze pagina slaat niets op.
+    <p class="aanvraag-noot">Het formulier opent in het ClusterTriage-portaal, op onze servers in de EU (in het Engels). Geen wachtwoord: wij sturen een knop naar uw werkadres.<br>
+      Ligt het cluster helemaal plat? Het portaal laat eerst zien hoe u het terugbrengt, node voor node.<br>
+      Liever iemand spreken? <a href="https://wa.me/66991461761">WhatsApp</a> of mail <a href="mailto:hans@clustertriage.com">hans@clustertriage.com</a>.
     </p>
-  </form>
+  </div>
 </div></section>
 
 <section class="section pattern"><div class="inner">
@@ -252,36 +228,6 @@
 (function(){
   var menu=document.getElementById('menu'),links=document.getElementById('navlinks');
   if(menu)menu.onclick=function(){var o=links.classList.toggle('open');menu.setAttribute('aria-expanded',o)};
-  var F=document.getElementById('triageform');
-  if(F){
-    function bericht(){
-      if(!F.reportValidity()) return null;
-      var v=function(n){return F.elements[n].value.trim()};
-      var d=new Date(),p=function(n){return String(n).padStart(2,'0')};
-      var stamp=d.getUTCFullYear()+'-'+p(d.getUTCMonth()+1)+'-'+p(d.getUTCDate())+' '+p(d.getUTCHours())+':'+p(d.getUTCMinutes())+' UTC';
-      return 'Cluster Triage aanvraag\nDatum: '+stamp+'\nNaam: '+v('voornaam')+' '+v('achternaam')+'\nBedrijf: '+v('bedrijf')+'\nE-mail: '+v('email')+'\nTelefoon: '+v('telefoon')+'\nLand: '+v('land')+'\nCluster: '+v('cluster')+'\nClustertype: '+v('clustertype')+'\nStoragetype: '+v('storagetype')+'\nIncident: '+v('uren')+' uur geleden'+'\nOmschrijving: '+v('omschrijving');
-    }
-
-    // S2D hoort bij HCI en Azure Local, dus die vult zichzelf in. Kiest de
-    // bezoeker daarna een ander clustertype, dan vervalt die automatische
-    // keuze weer; een handmatige keuze blijft altijd staan.
-    var ct=F.elements['clustertype'], st=F.elements['storagetype'], vanzelf=false;
-    if(ct&&st){
-      ct.addEventListener('change',function(){
-        if(ct.value==='HCI'||ct.value==='AZL'){ st.value='S2D'; vanzelf=true; }
-        else if(vanzelf){ st.value=''; vanzelf=false; }
-      });
-      st.addEventListener('change',function(){ vanzelf=false; });
-    }
-    document.getElementById('knop-wa').addEventListener('click',function(){
-      var b=bericht(); if(b===null) return;
-      window.open('https://wa.me/66991461761?text='+encodeURIComponent(b),'_blank','noopener');
-    });
-    document.getElementById('knop-mail').addEventListener('click',function(){
-      var b=bericht(); if(b===null) return;
-      location.href='mailto:hans@clustertriage.com?subject='+encodeURIComponent('Cluster Triage')+'&body='+encodeURIComponent(b);
-    });
-  }
 })();
 </script>
 <div class="cookiebalk" id="cookiebalk" role="dialog" aria-live="polite" aria-label="Cookies"><div class="cookiebalk-inner"><p>Wij gebruiken Google Analytics om te zien hoe bezoekers deze site gebruiken. Analytische cookies worden alleen geplaatst als u akkoord gaat. Wat er precies wordt vastgelegd staat in de <a href="/nl/privacy/">privacyverklaring</a>.</p><div class="cookiebalk-knoppen"><button type="button" class="btn primary" id="cookie-ja">Accepteer analytics</button><button type="button" class="btn ghost" id="cookie-nee">Weigeren</button></div></div></div>
