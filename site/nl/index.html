@@ -112,7 +112,7 @@
 </div></section>
 
 <section class="section" id="vergelijking"><div class="inner">
-  <div class="section-head"><h2>Vergeleken met de gratis tools van Microsoft</h2><p class="lead">ClusterDown is een gratis tool voor de triage van een falend Windows Failover Cluster: één alleen-lezend script dat u naast de tools draait die Windows zelf levert voor een clusterstoring. Ze doen goed waar ze voor bedoeld zijn; triage vult het gat ertussen.</p></div>
+  <div class="section-head"><h2>Vergeleken met de gratis tools van Microsoft</h2><p class="lead">ClusterDown is een gratis tool voor de triage van een falend Hyper-V-, HCI- of Azure Local-cluster: één alleen-lezend script dat u naast de tools draait die Windows zelf levert voor een clusterstoring. Ze doen goed waar ze voor bedoeld zijn; triage vult het gat ertussen.</p></div>
   <div class="cmp-wrap"><table class="cmp-table cmp-tools">
     <thead><tr><th scope="col">Tool</th><th scope="col">Wat het u geeft</th><th scope="col">Waar het ophoudt</th></tr></thead>
     <tbody>
@@ -125,7 +125,7 @@
 </div></section>
 
 <section class="section" id="met-de-hand"><div class="inner">
-  <div class="section-head"><h2>Triage met de hand: de commando's</h2><p class="lead">Zonder extra tool brengen deze ingebouwde PowerShell-commando's een falend Windows Failover Cluster snel in kaart. Voer ze uit op een node of een beheerserver met clusterrechten. Ze lezen alleen.</p></div>
+  <div class="section-head"><h2>Triage met de hand: de commando's</h2><p class="lead">Zonder extra tool brengen deze ingebouwde PowerShell-commando's een falend Hyper-V-, HCI- of Azure Local-cluster snel in kaart. Voer ze uit op een node of een beheerserver met clusterrechten. Ze lezen alleen.</p></div>
   <ol class="by-hand" style="max-width:860px;margin:0 auto 20px;line-height:1.6">
     <li><code>Get-ClusterNode</code>: staan alle nodes op Up? Een node die Down of Paused is, is het eerste spoor.</li>
     <li><code>Get-ClusterQuorum</code> en <code>Get-ClusterResource</code>: is de witness bereikbaar, en welke resources zijn offline of mislukt, op welke node?</li>
@@ -220,7 +220,7 @@
 
 </main>
 <footer class="ct-footer"><div class="ct-footer-inner">
-  <div class="ct-footer-brand"><b><img class="footer-mark" src="/favicon.png?v=1bd6caa1" alt="" width="40" height="40">Cluster<span>Down</span></b><p>Gratis, uitsluitend lezende incidenttriage voor Windows Failover Clusters. Bewaar het bewijs, sorteer de signalen, beslis wat u daarna onderzoekt.</p></div>
+  <div class="ct-footer-brand"><b><img class="footer-mark" src="/favicon.png?v=1bd6caa1" alt="" width="40" height="40">Cluster<span>Down</span></b><p>Gratis, uitsluitend lezende incidenttriage voor Hyper-V-, HCI- en Azure Local-clusters. Bewaar het bewijs, sorteer de signalen, beslis wat u daarna onderzoekt.</p></div>
   <div><h4>Deze site</h4><a href="#zowerkt">Zo werkt het</a><a href="#aanvraag">Aanvraag</a><a href="#veilig">Veilig &amp; lezend</a><a href="/nl/na-een-storing/">Na een storing</a></div>
   <div><h4>Doorlopende preventie</h4><a href="https://clustertriage.com/nl/" target="_blank" rel="noopener">ClusterTriage Assurance ↗</a></div>
 </div><div class="ct-footer-bottom"><span>© ClusterDown</span><span>Windows Server · Hyper-V · Failover Clustering · Storage Spaces Direct · Azure Local</span><button type="button" class="cookiebalk-open" style="font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer;text-decoration:underline">Cookievoorkeuren</button></div></footer>

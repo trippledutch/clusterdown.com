@@ -112,7 +112,7 @@
 </div></section>
 
 <section class="section" id="compare"><div class="inner">
-  <div class="section-head"><h2>Compared with the free Microsoft tools</h2><p class="lead">ClusterDown is a free tool to triage a failing Windows Failover Cluster: one read-only script you run next to the tools Windows already ships for a cluster incident. They are good at what they do; triage fills the gap between them.</p></div>
+  <div class="section-head"><h2>Compared with the free Microsoft tools</h2><p class="lead">ClusterDown is a free tool to triage a failing Hyper-V, HCI or Azure Local cluster: one read-only script you run next to the tools Windows already ships for a cluster incident. They are good at what they do; triage fills the gap between them.</p></div>
   <div class="cmp-wrap"><table class="cmp-table cmp-tools">
     <thead><tr><th scope="col">Tool</th><th scope="col">What it gives you</th><th scope="col">Where it stops</th></tr></thead>
     <tbody>
@@ -125,7 +125,7 @@
 </div></section>
 
 <section class="section" id="by-hand"><div class="inner">
-  <div class="section-head"><h2>Triage by hand: the commands</h2><p class="lead">Without any extra tool, these built-in PowerShell commands narrow down a failing Windows Failover Cluster. Run them from a node or a management server with cluster rights. All of them only read.</p></div>
+  <div class="section-head"><h2>Triage by hand: the commands</h2><p class="lead">Without any extra tool, these built-in PowerShell commands narrow down a failing Hyper-V, HCI or Azure Local cluster. Run them from a node or a management server with cluster rights. All of them only read.</p></div>
   <ol class="by-hand" style="max-width:860px;margin:0 auto 20px;line-height:1.6">
     <li><code>Get-ClusterNode</code>: are all nodes Up? A node that is Down or Paused is the first lead.</li>
     <li><code>Get-ClusterQuorum</code> and <code>Get-ClusterResource</code>: is the witness reachable, and which resources are offline or failed, on which node?</li>
@@ -220,7 +220,7 @@
 
 </main>
 <footer class="ct-footer"><div class="ct-footer-inner">
-  <div class="ct-footer-brand"><b><img class="footer-mark" src="/favicon.png?v=1bd6caa1" alt="" width="40" height="40">Cluster<span>Down</span></b><p>Free, read-only incident triage for Windows Failover Clusters. Preserve the evidence, sort the signals, decide what to investigate next.</p></div>
+  <div class="ct-footer-brand"><b><img class="footer-mark" src="/favicon.png?v=1bd6caa1" alt="" width="40" height="40">Cluster<span>Down</span></b><p>Free, read-only incident triage for Hyper-V, HCI and Azure Local clusters. Preserve the evidence, sort the signals, decide what to investigate next.</p></div>
   <div><h4>This site</h4><a href="#how">How it works</a><a href="#request">Request</a><a href="#safe">Safe &amp; read-only</a><a href="/en/after-an-incident/">After an incident</a></div>
   <div><h4>Ongoing prevention</h4><a href="https://clustertriage.com/en/" target="_blank" rel="noopener">ClusterTriage Assurance ↗</a></div>
 </div><div class="ct-footer-bottom"><span>© ClusterDown</span><span>Windows Server · Hyper-V · Failover Clustering · Storage Spaces Direct · Azure Local</span><button type="button" class="cookiebalk-open" style="font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer;text-decoration:underline">Cookie preferences</button></div></footer>
