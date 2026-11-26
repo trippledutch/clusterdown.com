@@ -36,7 +36,7 @@
 <section class="hero"><div class="hero-inner"><div>
   <p class="eyebrow">Free</p>
   <h1>Cluster <em>Issues</em>?</h1>
-  <p class="hero-copy">The free first step after a cluster incident. One read-only script across your Hyper-V, HCI or Azure Local environment. You receive the triage list: the five heaviest signals around your incident window, sorted by severity. Free, without subscription and without obligation.</p>
+  <p class="hero-copy">The free first step after a cluster incident. One read-only script across your Hyper-V, HCI and Azure Local clusters. You receive the triage list: the five heaviest signals around your incident window, sorted by severity. Free, without subscription and without obligation.</p>
   <div class="actions">
     <a class="btn primary" href="#request">Request the script</a>
     <a class="btn ghost" href="https://portal.clustertriage.com/demo/request/">See a demo</a>
@@ -112,7 +112,7 @@
 </div></section>
 
 <section class="section" id="compare"><div class="inner">
-  <div class="section-head"><h2>Compared with the free Microsoft tools</h2><p class="lead">ClusterDown is a free tool to triage a failing Hyper-V, HCI or Azure Local cluster: one read-only script you run next to the tools Windows already ships for a cluster incident. They are good at what they do; triage fills the gap between them.</p></div>
+  <div class="section-head"><h2>Compared with the free Microsoft tools</h2><p class="lead">ClusterDown is a free tool to triage failing Hyper-V, HCI and Azure Local clusters: one read-only script you run next to the tools Windows already ships for a cluster incident. They are good at what they do; triage fills the gap between them.</p></div>
   <div class="cmp-wrap"><table class="cmp-table cmp-tools">
     <thead><tr><th scope="col">Tool</th><th scope="col">What it gives you</th><th scope="col">Where it stops</th></tr></thead>
     <tbody>
@@ -125,7 +125,7 @@
 </div></section>
 
 <section class="section" id="by-hand"><div class="inner">
-  <div class="section-head"><h2>Triage by hand: the commands</h2><p class="lead">Without any extra tool, these built-in PowerShell commands narrow down a failing Hyper-V, HCI or Azure Local cluster. Run them from a node or a management server with cluster rights. All of them only read.</p></div>
+  <div class="section-head"><h2>Triage by hand: the commands</h2><p class="lead">Without any extra tool, these built-in PowerShell commands narrow down failing Hyper-V, HCI and Azure Local clusters. Run them from a node or a management server with cluster rights. All of them only read.</p></div>
   <ol class="by-hand" style="max-width:860px;margin:0 auto 20px;line-height:1.6">
     <li><code>Get-ClusterNode</code>: are all nodes Up? A node that is Down or Paused is the first lead.</li>
     <li><code>Get-ClusterQuorum</code> and <code>Get-ClusterResource</code>: is the witness reachable, and which resources are offline or failed, on which node?</li>
