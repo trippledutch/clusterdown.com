@@ -1,8 +1,8 @@
 # ClusterDown
 
-> ClusterDown is a free tool to triage a failing Windows Failover Cluster:
-> the incident-focused entry point for a Hyper-V, Failover Cluster, HCI or
-> Azure Local cluster that is down or unstable now. One read-only PowerShell
+> ClusterDown is a free tool to triage a failing cluster: the
+> incident-focused entry point for a Hyper-V, HCI or Azure Local
+> cluster that is down or unstable now. One read-only PowerShell
 > script runs on a management server (or on a cluster node) and reads the
 > cluster configuration and the event channels of every node around the
 > incident window; the customer receives the triage list: the five heaviest
@@ -28,5 +28,5 @@ Run by Hans Vredevoort, 40+ years in Microsoft infrastructure, ten years
 
 ## Related
 
-- [ClusterTriage](https://clustertriage.com/en/) ([NL](https://clustertriage.com/nl/)): year-round Windows Failover Cluster assurance
+- [ClusterTriage](https://clustertriage.com/en/) ([NL](https://clustertriage.com/nl/)): year-round assurance for Hyper-V, HCI and Azure Local clusters
 - [ClusterTriage articles](https://clustertriage.com/en/blog/) ([NL](https://clustertriage.com/nl/blog/)): technical articles on Hyper-V, Failover Clustering and Azure Local
